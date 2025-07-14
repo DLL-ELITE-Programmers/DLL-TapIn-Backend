@@ -1,6 +1,7 @@
 # INFO: Backend
 __pycache__
 venv
+db.sqlite3
 
 # INFO: Frontend
 node_modules
