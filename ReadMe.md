@@ -6,6 +6,12 @@
 > This project was ...
 
 ---
+### Installation
+```
+pip install -r requirements.txt
+```
+
+---
 ### Contributors
 1. [Abdul Barry Adam](https://github.com/warebar)
 2. [Kurt Cyrus Atoat](https://github.com/kurtatoat)

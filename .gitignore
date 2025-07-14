@@ -1,0 +1,7 @@
+# INFO: Backend
+__pycache__
+venv
+
+# INFO: Frontend
+node_modules
+dist
