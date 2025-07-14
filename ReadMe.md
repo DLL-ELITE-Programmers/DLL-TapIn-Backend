@@ -7,6 +7,7 @@
 
 ---
 ### Installation
+<h3><font color="red">Please note that you need first to activate your <code>Virtual Environment</code> before you install these dependencies. You may install it using <code>pip install virtualenv</code> and activate it using <code>python -m venv venv</code>.</font></h3>
 ```
 pip install -r requirements.txt
 ```
