@@ -1,10 +1,9 @@
 from django.contrib import admin
-from .models import User, Department
+from .models import User, Department, Student
 from django.contrib import admin, messages
 from django.contrib.auth.admin import UserAdmin
 from django.urls import path
 from django.shortcuts import redirect
-from django.forms import ModelForm
 
 # Register your models here.
 
@@ -21,6 +20,7 @@ class CustomUserConfig(UserAdmin):
                     "email",
                     # "birthday",
                     "sex",
+                    "department"
                 )
             },
         ),
@@ -76,4 +76,5 @@ class CustomUserConfig(UserAdmin):
         return redirect(f"../../{id}")
     
 admin.site.register(Department)
+admin.site.register(Student)
 admin.site.register(User, CustomUserConfig)

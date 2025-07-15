@@ -20,3 +20,13 @@ class User(AbstractUser):
         choices=[(0, "Female"), (1, "Male"), (2, "Others")], default=2
     )
     department = models.ForeignKey(Department, on_delete=models.CASCADE, related_name="user", default="", null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.last_name}, {self.first_name}"
+
+class Student(models.Model):
+    student_id = models.CharField(max_length=25, default="012A-1234", primary_key=True, unique=True)
+    student_info = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.student_id
