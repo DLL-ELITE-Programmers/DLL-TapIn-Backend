@@ -1,6 +1,7 @@
-from django.db import models
-from django.contrib.auth.models import AbstractUser
 import uuid
+
+from django.contrib.auth.models import AbstractUser
+from django.db import models
 
 # Create your models here.
 
@@ -33,6 +34,7 @@ class User(AbstractUser):
     )
 
     def __str__(self):
+        #     return self.id
         return f"{self.last_name}, {self.first_name}"
 
 
@@ -45,4 +47,3 @@ class Student(models.Model):
 
     def __str__(self):
         return self.student_id
-

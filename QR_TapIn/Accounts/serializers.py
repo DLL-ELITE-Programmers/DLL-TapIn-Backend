@@ -13,14 +13,28 @@ class StudentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Student
-        fields = "__all__"
+        fields = ["student_id", "student_details", "verified"]
 
     def get_student_details(self, obj):
-        user = User.objects.get(id__exact=obj.id)
-        return UserSerializer(user).data
+        return UserSerializer(obj.student_info).data
 
 
 class UserSerializer(serializers.ModelSerializer):
+    department_info = serializers.SerializerMethodField()
+
     class Meta:
         model = User
-        fields = "__all__"
+        fields = [
+            "username",
+            "first_name",
+            "middle_name",
+            "last_name",
+            "sex",
+            "email",
+            "department_info",
+        ]
+
+    def get_department_info(self, obj):
+        if obj.department:
+            return DepartmentSerializer(obj.department).data
+        return "Sana ako na lang"
