@@ -124,7 +124,7 @@ WSGI_APPLICATION = "QR_TapIn.wsgi.application"
 DATABASES = {
     "default": dj_database_url.config(
         # Replace this value with your local database's connection string.
-        default="postgresql://postgres:postgres@localhost:5432/mysite",
+        default="postgresql://itparadigm:WL3Nuh9fByJWyXNXqOkBagTDd6ktWZpz@dpg-d1qpmsodl3ps73elm8gg-a.singapore-postgres.render.com/qrtapin",
         conn_max_age=600,
     ),
     "offline": {

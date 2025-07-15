@@ -6,3 +6,6 @@ db.sqlite3
 # INFO: Frontend
 node_modules
 dist
+
+# INFO: All
+.env
