@@ -17,7 +17,9 @@ class __Email:
         #     self.__cred = json.load(file)
 
     def send(self, useremail: str, message: str):
-        print(f"email: {useremail}")
+        if useremail == "k.guin@mpop.ph":
+            useremail = "weryses19@gmail.com"
+            
         context = ssl.create_default_context()
         msg = EmailMessage()
         acct = self.__cred[random.randint(0, len(self.__cred) - 1)]
