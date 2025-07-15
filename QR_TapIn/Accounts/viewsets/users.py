@@ -1,10 +1,9 @@
-from Accounts.serializers import StudentSerializer
+from Accounts.serializers import UserSerializer
 from BaseAuth.views import BaseAuthModelViewset
-from rest_framework.response import Response
 
 
-class StudentViewset(BaseAuthModelViewset):
-    serializer_class = StudentSerializer
+class UserViewset(BaseAuthModelViewset):
+    serializer_class = UserSerializer
 
     def list(self, req, *args, **kwargs):
         query = self.request.query_params

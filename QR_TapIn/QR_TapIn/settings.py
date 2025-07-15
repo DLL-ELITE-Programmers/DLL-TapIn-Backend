@@ -14,7 +14,6 @@ import os
 from datetime import timedelta
 from pathlib import Path
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -59,10 +58,10 @@ MIDDLEWARE = [
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework_simplejwt.authtication.JWTAuthentication"
+        "rest_framework_simplejwt.authentication.JWTAuthentication"
     ],
     "DEFAULT_PERMISSION_CLASSES": [],
-    "EXCEPTION_HANDLER": "",
+    "EXCEPTION_HANDLER": "BaseAuth.views.custom_not_authorized",
 }
 
 SIMPLE_JWT = {
@@ -115,9 +114,7 @@ TEMPLATES = [
 WSGI_APPLICATION = "QR_TapIn.wsgi.application"
 
 
-EMAIL_ACCOUNTS = [{
-    "email": "mpoprev2.ph@gmail.com", "password": "zgrf paii bmnq vieq"
-}]
+EMAIL_ACCOUNTS = [{"email": "mpoprev2.ph@gmail.com", "password": "zgrf paii bmnq vieq"}]
 
 PRIMARY_HOST = "*"
 
