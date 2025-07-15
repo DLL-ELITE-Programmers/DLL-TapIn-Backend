@@ -1,11 +1,6 @@
-from Accounts.models import Department, Student, User
+from Accounts.models import Student, User
+from Organizations.serializers import DepartmentSerializer
 from rest_framework import serializers
-
-
-class DepartmentSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Department
-        fields = "__all__"
 
 
 class StudentSerializer(serializers.ModelSerializer):

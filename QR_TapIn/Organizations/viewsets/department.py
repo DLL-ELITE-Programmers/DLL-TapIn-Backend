@@ -1,6 +1,6 @@
-from Accounts.models import Department
-from Accounts.serializers import DepartmentSerializer
 from BaseAuth.views import BaseAuthModelViewset
+from Organizations.models import Department
+from Organizations.serializers import DepartmentSerializer
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 

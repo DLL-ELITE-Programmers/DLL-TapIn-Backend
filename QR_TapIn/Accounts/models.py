@@ -1,19 +1,11 @@
 import uuid
 
+from BaseAuth.models import CoreModelDescending
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from Organizations.models import Department
 
 # Create your models here.
-
-
-class Department(models.Model):
-    department_id = models.CharField(max_length=10, default="BSIT")
-    department_name = models.CharField(
-        max_length=100, default="Bachelor of Science in Information Technology"
-    )
-
-    def __str__(self):
-        return f"{self.department_id}"
 
 
 class User(AbstractUser):
@@ -38,7 +30,9 @@ class User(AbstractUser):
         return f"{self.last_name}, {self.first_name}"
 
 
-class Student(models.Model):
+class Student(CoreModelDescending):
+    order = "student_id"
+
     student_id = models.CharField(
         max_length=25, default="012A-1234", primary_key=True, unique=True
     )
