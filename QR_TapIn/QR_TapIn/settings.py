@@ -14,7 +14,6 @@ import os
 from datetime import timedelta
 from pathlib import Path
 
-import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -122,11 +121,18 @@ WSGI_APPLICATION = "QR_TapIn.wsgi.application"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    "default": dj_database_url.config(
-        # Replace this value with your local database's connection string.
-        default="postgresql://itparadigm:WL3Nuh9fByJWyXNXqOkBagTDd6ktWZpz@dpg-d1qpmsodl3ps73elm8gg-a.singapore-postgres.render.com/qrtapin",
-        conn_max_age=600,
-    ),
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "defaultdb",
+        "HOST": "pg-qrtapin-qrtapin.b.aivencloud.com",
+        "USER": "avnadmin",
+        "PASSWORD": "AVNS_Toc0HnIuBfZ_KAo1KF_",
+        "PORT": "24040",
+        "OPTIONS": {
+            "sslmode": "verify-full",
+            "sslrootcert": os.path.join(BASE_DIR, "certs", "aiven-ca.crt"),
+        },
+    },
     "offline": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
