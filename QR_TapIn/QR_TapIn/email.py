@@ -21,14 +21,14 @@ class __Email:
         context = ssl.create_default_context()
         msg = EmailMessage()
         acct = self.__cred[random.randint(0, len(self.__cred) - 1)]
-        msg["Subject"] = "St. Jude Development Corporation"
+        msg["Subject"] = "QR Tap IN"
         msg["From"] = acct.get("email")
         msg["To"] = useremail
         msg.set_content(message)
 
         try:
-            # validate_email(acct.get("email"))
-            # validate_email(useremail)
+            validate_email(acct.get("email"))
+            validate_email(useremail)
 
             print(f"sending using {acct.get('email')}")
             with smtplib.SMTP_SSL(
