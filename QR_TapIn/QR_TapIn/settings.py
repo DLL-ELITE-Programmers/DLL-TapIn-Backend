@@ -28,8 +28,6 @@ SECRET_KEY = "django-insecure-+mr5i&7kz*vr@+nt2a7@w2e6s9fb45h9&*q@@fz774&hl&3-+b
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -116,6 +114,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "QR_TapIn.wsgi.application"
 
+
+EMAIL_ACCOUNTS = [{
+    "email": "mpoprev2.ph@gmail.com", "password": "zgrf paii bmnq vieq"
+}]
+
+PRIMARY_HOST = "*"
+
+ALLOWED_HOSTS = ["*"]
+CORS_ALLOWED_HOST = ["*"]
+CORS_ALLOWED_ORIGINS = [PRIMARY_HOST]
+CORS_ALLOWED_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_METHODS = ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
