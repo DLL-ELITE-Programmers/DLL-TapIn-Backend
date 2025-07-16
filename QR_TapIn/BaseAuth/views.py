@@ -8,7 +8,6 @@ from rest_framework.response import Response
 from rest_framework.views import exception_handler
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
-
 # Create your views here.
 class BaseAuthModelViewset(viewsets.ModelViewSet, CustomMixins):
     permission_classes = [IsAuthenticated]
@@ -41,4 +40,3 @@ def custom_not_authorized(exc, context):
             }
         )
     return response
-
