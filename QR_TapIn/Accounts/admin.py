@@ -1,5 +1,5 @@
 from django.contrib import admin
-from Accounts.models import User, Student
+from Accounts.models import User
 from django.contrib import admin, messages
 from django.contrib.auth.admin import UserAdmin
 from django.urls import path
@@ -22,6 +22,7 @@ class CustomUserConfig(UserAdmin):
                     # "birthday",
                     "sex",
                     "department",
+                    "verified"
                 )
             },
         ),
@@ -77,5 +78,4 @@ class CustomUserConfig(UserAdmin):
         return redirect(f"../../{id}")
 
 
-admin.site.register(Student)
 admin.site.register(User, CustomUserConfig)

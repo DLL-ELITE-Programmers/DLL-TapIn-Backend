@@ -1,9 +1,11 @@
 from Accounts.models import User
 from Accounts.serializers import UserSerializer
 from BaseAuth.views import BaseAuthModelViewset
-
+from rest_framework.response import Response
+from rest_framework.permissions import AllowAny
 
 class UserViewset(BaseAuthModelViewset):
+    permission_classes = [AllowAny]
     queryset = User.objects.filter()
     serializer_class = UserSerializer
 

@@ -18,4 +18,4 @@ class Event(models.Model):
 
 class Participant(models.Model):
     event = models.OneToOneField(Event, on_delete=models.CASCADE)
-    participant_info = models.ForeignKey(User, on_delete=models.CASCADE)
+    participant = models.ForeignKey(User, on_delete=models.CASCADE)

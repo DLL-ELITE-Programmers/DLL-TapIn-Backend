@@ -1,18 +1,6 @@
-from Accounts.models import Student, User
+from Accounts.models import User
 from Organizations.serializers import DepartmentSerializer
 from rest_framework import serializers
-
-
-class StudentSerializer(serializers.ModelSerializer):
-    student_details = serializers.SerializerMethodField()
-
-    class Meta:
-        model = Student
-        fields = ["student_id", "student_details", "verified"]
-
-    def get_student_details(self, obj):
-        return UserSerializer(obj.student_info).data
-
 
 class UserSerializer(serializers.ModelSerializer):
     department_info = serializers.SerializerMethodField()

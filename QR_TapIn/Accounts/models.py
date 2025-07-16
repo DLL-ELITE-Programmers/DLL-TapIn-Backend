@@ -1,6 +1,5 @@
 import uuid
 
-from BaseAuth.models import CoreModelDescending
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from Organizations.models import Department
@@ -24,20 +23,12 @@ class User(AbstractUser):
         null=True,
         blank=True,
     )
+    verified = models.BooleanField(default=False)
 
     def __str__(self):
         #     return self.id
         return f"{self.last_name}, {self.first_name}"
 
 
-class Student(CoreModelDescending):
-    order = "student_id"
-
-    student_id = models.CharField(
-        max_length=25, default="012A-1234", primary_key=True, unique=True
-    )
-    student_info = models.OneToOneField(User, on_delete=models.CASCADE)
-    verified = models.BooleanField(default=False)
-
-    def __str__(self):
-        return self.student_id
+    class Meta:
+        ordering = ["-username"]
