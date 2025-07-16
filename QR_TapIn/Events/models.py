@@ -3,6 +3,8 @@ from datetime import datetime
 from django.db import models
 from Organizations.models import Organization
 
+from Accounts.models import User
+
 # Create your models here.
 
 
@@ -13,3 +15,7 @@ class Event(models.Model):
     handler = models.ManyToManyField(Organization)
     time_in = models.DateTimeField(default=datetime.now())
     time_out = models.DateTimeField(default=datetime.now())
+
+class Participant(models.Model):
+    event = models.OneToOneField(Event, on_delete=models.CASCADE)
+    participant_info = models.ForeignKey(User, on_delete=models.CASCADE)

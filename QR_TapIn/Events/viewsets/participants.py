@@ -1,0 +1,14 @@
+from rest_framework.response import Response
+from rest_framework.viewsets import ModelViewSet
+from Events.models import Participant
+from Events.serializers import ParticipantSerializer
+
+class ParticipantViewset(ModelViewSet):
+    queryset = Participant.objects.filter()
+    serializer_class = ParticipantSerializer()
+
+    def list(self, req, *args, **kwargs):
+        query = self.request.query_set
+
+        data = self.serializer_class(self.queryset.all(), many=True)
+        return Response(data.data)
