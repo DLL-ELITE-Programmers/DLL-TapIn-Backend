@@ -1,6 +1,8 @@
 from BaseAuth.mixins import CustomMixins
 from BaseAuth.paginator import TenRowPaginator
 
+from django.http import HttpResponse
+
 from rest_framework import viewsets
 from rest_framework.exceptions import NotAuthenticated
 from rest_framework.permissions import IsAuthenticated
@@ -40,3 +42,6 @@ def custom_not_authorized(exc, context):
             }
         )
     return response
+
+def main(request):
+    return HttpResponse("<h1>Miss mo na? Kaso miss ka ba?</h1>")
