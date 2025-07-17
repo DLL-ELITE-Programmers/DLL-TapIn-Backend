@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "https://n7dwb6cv-80.asse.devtunnels.ms";
+const url = "https://n7dwb6cv-80.asse.devtunnels.ms/api";
 
 const endpoint_middleware = (endpoint: string) => {
   if (!endpoint.startsWith("/")) {

@@ -10,8 +10,8 @@ export default function Login() {
         <Text className="text-3xl font-bold">Login</Text>
         <Text>Don't have an account yet?</Text>{" "}
         <Text className="underline">Baka di pa pa talaga nag eexists</Text>
-        <Input hint="012A-3456" name="Student_ID" />
-        <Input name="password" password={true} />
+        <Input hint="012A-3456" label="Student ID" />
+        <Input label="Password" password={true} />
         <View className="flex flex-row justify-between items-center w-full">
           <View className="flex flex-row items-center">
             <Switch value={false} />
