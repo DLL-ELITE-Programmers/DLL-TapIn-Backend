@@ -1,15 +1,12 @@
 from BaseAuth.mixins import CustomMixins
 from BaseAuth.paginator import TenRowPaginator
 
-from django.http import HttpResponse
-
 from rest_framework import viewsets
 from rest_framework.exceptions import NotAuthenticated
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import exception_handler
 from rest_framework_simplejwt.authentication import JWTAuthentication
-from rest_framework.status import HTTP_404_NOT_FOUND
 
 # Create your views here.
 class BaseAuthModelViewset(viewsets.ModelViewSet, CustomMixins):
@@ -43,9 +40,3 @@ def custom_not_authorized(exc, context):
             }
         )
     return response
-
-def main(request):
-    return HttpResponse("<h1>Miss mo na? Kaso miss ka ba?</h1>")
-
-def _404(request):
-    return HttpResponse("<h1>Bakit mo kasi hinahanap ung wala na. Awat na kase.</h1>", status=HTTP_404_NOT_FOUND)
