@@ -1,7 +1,7 @@
 import "./global.css";
 import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Text, View } from "react-native";
 import { get, get_unauth } from "./utils/access";
 
 export default function App() {
@@ -13,26 +13,20 @@ export default function App() {
     })();
   }, []);
   return (
-    <View className="bg-red-500" style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <Text>Basta miss ko na sya.</Text>
-      {data.map((user: unknown, index: number) => {
-        return (
-          <Text>
-            {user.username} - {user.last_name}, {user.first_name}
-          </Text>
-        );
-      })}
+    <View className="flex flex-col bg-[#fff] w-full h-full">
       <StatusBar style="auto" />
+      {/* NOTE: mt-[30px] was the one who created the gap for the statusbar */}
+      <View className="bg-slate-400 mt-[30px] w-full h-full flex-1 items-center justify-center">
+        <Text>Open up App.tsx to start working on your app!</Text>
+        <Text>Basta miss ko na sya.</Text>
+        {data.map((user: unknown, index: number) => {
+          return (
+            <Text key={index}>
+              {user.username} - {user.last_name}, {user.first_name}
+            </Text>
+          );
+        })}
+      </View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
