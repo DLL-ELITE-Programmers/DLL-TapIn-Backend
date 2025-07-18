@@ -33,4 +33,3 @@ pip install -r requirements.txt
 4. [Bernard Gabito](https://github.com/brrnrd)
 5. [Rogemson Molina](https://github.com/Rogemson)
 6. [Ryann Kim Sesgundo](https://github.com/RyannKim327)
-
