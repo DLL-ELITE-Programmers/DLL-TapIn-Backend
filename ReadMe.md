@@ -5,7 +5,7 @@
 
 ### Introduction
 
-> This project was ...
+> This project was ... Basta ganun
 
 ---
 
