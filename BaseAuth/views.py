@@ -28,6 +28,15 @@ class BaseAuthModelViewset(viewsets.ModelViewSet, CustomMixins):
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
 
+    def extract_error_handler(self, err):
+        if isinstance(err, dict):
+            for key, value in err.items():
+                if isinstance(value, list) and value:
+                    return str(value[0])
+                else:
+                    return self.extract_error_handler(value)
+        return str(err)
+
 
 def custom_not_authorized(exc, context):
     response = exception_handler(exc, context)

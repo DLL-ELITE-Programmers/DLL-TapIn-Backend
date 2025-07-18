@@ -29,6 +29,12 @@ class User(AbstractUser):
         #     return self.id
         return f"{self.last_name}, {self.first_name}"
 
+    def save(self, *args, **kwargs):
+        self.username = self.username.upper()
+        self.first_name = self.first_name.upper()
+        self.middle_name = self.middle_name.upper()
+        self.last_name = self.last_name.upper()
+        super().save(*args, **kwargs)
 
     class Meta:
         ordering = ["-username"]
