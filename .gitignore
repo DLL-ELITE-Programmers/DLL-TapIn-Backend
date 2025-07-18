@@ -46,3 +46,6 @@ yarn-error.*
 # INFO: All
 .env
 
+package-lock.json
+package.json
+autopull.js
