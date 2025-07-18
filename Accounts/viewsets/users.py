@@ -13,10 +13,10 @@ class UserViewset(BaseAuthModelViewset):
     def list(self, req, *args, **kwargs):
         query = self.request.query_params
 
-        data = self.serializer_class(self.queryset.all(), many=True)
         if query.get("user"):
-            data = self.serializer_class(username__iexact=query.get("user"), many=True)
+            self.queryset = User.objects.filter(username__iexact=query.get("user"), many=True)
 
+        data = self.serializer_class(self.queryset.all(), many=True)
         return Response(data.data)
 
     @action(detail=False, methods=["POST"], url_path="register", permission_classes=[AllowAny])
