@@ -5,7 +5,10 @@ from rest_framework import serializers
 class DepartmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Department
-        fields = "__all__"
+        fields = [
+            "department_id",
+            "department_name"
+        ]
 
 class OrganizationSerializer(serializers.ModelSerializer):
     class Meta:
