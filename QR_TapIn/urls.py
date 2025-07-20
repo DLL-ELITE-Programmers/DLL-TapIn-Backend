@@ -15,23 +15,23 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-import base64, random
+import base64
+import random
 
 from django.contrib import admin
 from django.urls import include, path
 
-__dattebayo_multiverse__ = [
-    "X19kYXR0ZWJheW9fXw==",
-    "X19kYXR0ZWJheW8=",
-    "RGF0dGVCYXlv"
-]
+__dattebayo_multiverse__ = ["X19kYXR0ZWJheW9fXw==", "X19kYXR0ZWJheW8=", "RGF0dGVCYXlv"]
 
-dattebayo = __dattebayo_multiverse__[random.randint(0, len(__dattebayo_multiverse__) - 1)]
+dattebayo = __dattebayo_multiverse__[
+    random.randint(0, len(__dattebayo_multiverse__) - 1)
+]
 
 urlpatterns = [
     path(f"{base64.b64decode(dattebayo).decode('utf-8')}/", admin.site.urls),
     path("api/", include("Accounts.urls")),
     path("api/", include("Events.urls")),
+    path("api/", include("Feedbacks.urls")),
     path("api/", include("Organizations.urls")),
-    path("", include("core.urls"))
+    path("", include("core.urls")),
 ]

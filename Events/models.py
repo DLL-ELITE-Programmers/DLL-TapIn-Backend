@@ -1,9 +1,8 @@
-from datetime import datetime
-
 from django.db import models
-from Organizations.models import Organization
+from django.utils.timezone import datetime
 
 from Accounts.models import User
+from Organizations.models import Organization
 
 # Create your models here.
 
@@ -16,8 +15,9 @@ class Event(models.Model):
     time_in = models.DateTimeField(default=datetime.now())
     time_out = models.DateTimeField(default=datetime.now())
 
+
 class Participant(models.Model):
     event = models.OneToOneField(Event, on_delete=models.CASCADE)
     participant = models.ForeignKey(User, on_delete=models.CASCADE)
-    time_in = models.DateField(auto_now_add=datetime.now())
-    time_in = models.DateField(auto_now=datetime.now())
+    time_in = models.DateField(auto_now_add=True)
+    time_in = models.DateField(auto_now=True)
