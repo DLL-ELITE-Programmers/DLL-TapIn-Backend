@@ -8,6 +8,7 @@ from Accounts.models import User
 from Accounts.serializers import UserSerializer
 from BaseAuth.views import BaseAuthModelViewset
 from Organizations.models import Department
+from QR_TapIn.email import sendEmail
 
 
 class UserViewset(BaseAuthModelViewset):
@@ -23,6 +24,17 @@ class UserViewset(BaseAuthModelViewset):
 
         data = self.serializer_class(self.queryset.all(), many=True)
         return Response(data.data)
+
+    @action(
+        detail=False,
+        methods=["GET"],
+        url_path="forgot-password",
+        permission_classes=[AllowAny],
+    )
+    def forgotPassword(self, request):
+        data = request.query_params
+        sendEmail(data.get("email"), "I miss you")
+        return Response(data)
 
     @action(
         detail=False, methods=["POST"], url_path="login", permission_classes=[AllowAny]

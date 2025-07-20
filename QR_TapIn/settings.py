@@ -117,7 +117,7 @@ TEMPLATES = [
 WSGI_APPLICATION = "QR_TapIn.wsgi.application"
 
 
-EMAIL_ACCOUNTS = [{"email": "mpoprev2.ph@gmail.com", "password": "zgrf paii bmnq vieq"}]
+EMAIL_ACCOUNTS = [{"email": "dll_tapin@myyahoo.com", "password": "RyannKim327"}]
 
 PRIMARY_HOST = "*"
 
