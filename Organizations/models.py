@@ -1,5 +1,6 @@
-from BaseAuth.models import CoreModel
 from django.db import models
+
+from BaseAuth.models import CoreModel
 
 # Create your models here.
 

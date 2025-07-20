@@ -2,6 +2,7 @@ import uuid
 
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+
 from Organizations.models import Department
 
 # Create your models here.
@@ -18,8 +19,7 @@ class User(AbstractUser):
     department = models.ForeignKey(
         Department,
         on_delete=models.CASCADE,
-        related_name="user",
-        default="",
+        related_name="users",
         null=True,
         blank=True,
     )
@@ -32,9 +32,11 @@ class User(AbstractUser):
     def save(self, *args, **kwargs):
         self.username = self.username.upper()
         self.first_name = self.first_name.upper()
-        self.middle_name = self.middle_name.upper()
+        if self.middle_name:
+            self.middle_name = self.middle_name.upper()
         self.last_name = self.last_name.upper()
         super().save(*args, **kwargs)
 
     class Meta:
         ordering = ["-username"]
+

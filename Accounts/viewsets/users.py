@@ -7,6 +7,7 @@ from rest_framework_simplejwt.tokens import AccessToken, RefreshToken
 from Accounts.models import User
 from Accounts.serializers import UserSerializer
 from BaseAuth.views import BaseAuthModelViewset
+from Organizations.models import Department
 
 
 class UserViewset(BaseAuthModelViewset):
@@ -32,7 +33,9 @@ class UserViewset(BaseAuthModelViewset):
         password = data.get("password")
 
         if not username or not password:
-            return Response({"error": "Please provide username and/or password"})
+            return Response({"error": "Please provide Student ID and/or Password"})
+
+        username = username.upper()
 
         user_data = authenticate(username=username, password=password)
 
@@ -66,7 +69,16 @@ class UserViewset(BaseAuthModelViewset):
         try:
             data = request.data
 
-            data["username"] = data["student_id"]
+            if not data["student_id"] or not data["password"]:
+                return Response({"error": "Please provide your information"})
+
+            data["username"] = data.get("student_id").upper()
+
+            dept = Department.objects.get(
+                department_id__iexact=data.get("department_id")
+            )
+
+            data["department"] = int(dept.id)
             serializer = self.serializer_class(data=data, partial=True)
             if serializer.is_valid():
                 serializer.save()
