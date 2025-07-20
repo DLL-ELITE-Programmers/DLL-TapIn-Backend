@@ -1,6 +1,8 @@
+from rest_framework import serializers
+
 from Accounts.models import User
 from Organizations.serializers import DepartmentSerializer
-from rest_framework import serializers
+
 
 class UserSerializer(serializers.ModelSerializer):
     department_info = serializers.SerializerMethodField()
@@ -15,6 +17,7 @@ class UserSerializer(serializers.ModelSerializer):
             "sex",
             "email",
             "department_info",
+            "is_superuser",
         ]
 
     def get_department_info(self, obj):
