@@ -91,11 +91,13 @@ class UserViewset(BaseAuthModelViewset):
             )
 
             data["department"] = int(dept.id)
-            serializer = self.serializer_class(data=data, partial=True)
+            serializer = self.serializer_class(data=data, partial=False)
+
             if serializer.is_valid():
                 serializer.save()
                 return Response({"message": "Account was registered"})
             return Response({"error": self.extract_error_handler(serializer.errors)})
 
         except Exception as e:
+            print(e)
             return Response({"error": str(e)})
