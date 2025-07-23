@@ -22,6 +22,14 @@ def _404(request):
         "May pang gala ka nga, wala ka namang kasama, sana ako na lang.",
         "Kung ang pusa ay may syam na buhay, sana ikaw na lang habang buhay.",
         "Pre, di ako lasing, pero bakit sya pa rin.",
+        "Kung miss mo, e di wow.",
+        "Uy, naghahanap pa rin hahaha.",
+        "Wag mong hintayin, agawin mo na agad.",
+        "Kung ang mga ibon ay lumilupad, susunod ka na.",
+        "Minsan na nga lang swertehin, nagising pa.",
+        "Sabi ng bestfriend ko, pangit sya, pero sinabihan ko sya ng maganda, anong next step?",
+        "Hindi masamang umasa, lalo na kung ***** ka.",
+        "Mas masakit pa sa nahulog mo ung natitirang pamasahe mo, ung walang natirang feelings para sayo.",
     ]
     response = responses[random.randint(0, len(responses) - 1)]
     return HttpResponse(
