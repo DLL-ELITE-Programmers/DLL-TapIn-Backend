@@ -33,11 +33,13 @@ dattebayo = __dattebayo_multiverse__[
     random.randint(0, len(__dattebayo_multiverse__) - 1)
 ]
 
+api = "__dll__/"
+
 urlpatterns = [
     path(f"{base64.b64decode(dattebayo).decode('utf-8')}/", admin.site.urls),
-    path("api/", include("Accounts.urls")),
-    path("api/", include("Events.urls")),
-    path("api/", include("Feedbacks.urls")),
-    path("api/", include("Organizations.urls")),
+    path(api, include("Accounts.urls")),
+    path(api, include("Events.urls")),
+    path(api, include("Feedbacks.urls")),
+    path(api, include("Organizations.urls")),
     path("", include("core.urls")),
 ]
