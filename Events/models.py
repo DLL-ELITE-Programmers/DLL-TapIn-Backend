@@ -17,7 +17,7 @@ class Event(models.Model):
 
 
 class Participant(models.Model):
-    event = models.OneToOneField(Event, on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
     participant = models.ForeignKey(User, on_delete=models.CASCADE)
     time_in = models.DateField(auto_now_add=True)
     time_in = models.DateField(auto_now=True)

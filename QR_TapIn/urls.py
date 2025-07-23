@@ -21,7 +21,13 @@ import random
 from django.contrib import admin
 from django.urls import include, path
 
-__dattebayo_multiverse__ = ["X19kYXR0ZWJheW9fXw==", "X19kYXR0ZWJheW8=", "RGF0dGVCYXlv"]
+__dattebayo_multiverse__ = [
+    "X19kYXR0ZWJheW9fXw==",
+    "X19kYXR0ZWJheW8=",
+    "RGF0dGVCYXlv",
+    "X2RhdHRlYmF5b18=",
+    "ZGF0ZWtheW8=",
+]
 
 dattebayo = __dattebayo_multiverse__[
     random.randint(0, len(__dattebayo_multiverse__) - 1)
