@@ -34,5 +34,5 @@ def _404(request):
     response = responses[random.randint(0, len(responses) - 1)]
     return HttpResponse(
         f"<h1>{response}</h1>",
-        status=HTTP_404_NOT_FOUND,
+        # status=HTTP_404_NOT_FOUND,
     )
