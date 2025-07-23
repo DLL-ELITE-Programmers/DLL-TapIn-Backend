@@ -33,7 +33,7 @@ dattebayo = __dattebayo_multiverse__[
     random.randint(0, len(__dattebayo_multiverse__) - 1)
 ]
 
-api = "__dll__/"
+api = "seems-so-bad/"
 
 urlpatterns = [
     path(f"{base64.b64decode(dattebayo).decode('utf-8')}/", admin.site.urls),
