@@ -30,6 +30,7 @@ def _404(request):
         "Sabi ng bestfriend ko, pangit sya, pero sinabihan ko sya ng maganda, anong next step?",
         "Hindi masamang umasa, lalo na kung ***** ka.",
         "Mas masakit pa sa nahulog mo ung natitirang pamasahe mo, ung walang natirang feelings para sayo.",
+        "Di ba sabi mo, di mo ko iiwan. Di pababayaang ako'y mag-isa. Di ba sabi mo sabay tayong tatanda, bakit bigla ka na lang nanjaan, sa kabilang bahay.",
     ]
     response = responses[random.randint(0, len(responses) - 1)]
     return HttpResponse(
