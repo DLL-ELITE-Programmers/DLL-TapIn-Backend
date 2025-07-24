@@ -31,11 +31,14 @@ class UserViewset(BaseAuthModelViewset):
     def myself(self, request):
         query = self.request.query_params
 
-        if query.get("user"):
-            self.queryset = User.objects.get(username__iexact=query.get("user"))
-            data = self.serializer_class(self.queryset)
-            return Response(data.data)
-
+        if query.get("token"):
+            try:
+                token = AccessToken(query.get("token"))
+                user = User.objects.get(id=token["user_id"])
+                data = self.serializer_class(user)
+                return Response(data.data)
+            except Exection as e:
+                return Response({"error": str(e)})
         return Response({"error": "There is no user ID"})
 
     @action(
