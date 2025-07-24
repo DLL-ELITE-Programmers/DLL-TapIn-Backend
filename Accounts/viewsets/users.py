@@ -37,7 +37,7 @@ class UserViewset(BaseAuthModelViewset):
                 user = User.objects.get(id=token["user_id"])
                 data = self.serializer_class(user)
                 return Response(data.data)
-            except Exection as e:
+            except Exception as e:
                 return Response({"error": str(e)})
         return Response({"error": "There is no user ID"})
 
