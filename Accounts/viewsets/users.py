@@ -25,7 +25,9 @@ class UserViewset(BaseAuthModelViewset):
         data = self.serializer_class(self.queryset.all(), many=True)
         return Response(data.data)
 
-    @action(detail=False, methods="GET", url_path="self", permission_classes=[AllowAny])
+    @action(
+        detail=False, methods=["GET"], url_path="self", permission_classes=[AllowAny]
+    )
     def myself(self, request):
         query = self.request.query_params
 
