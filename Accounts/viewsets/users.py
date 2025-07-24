@@ -25,6 +25,17 @@ class UserViewset(BaseAuthModelViewset):
         data = self.serializer_class(self.queryset.all(), many=True)
         return Response(data.data)
 
+    @action(detail=False, methods="GET", url_path="self", permission_classes=[AllowAny])
+    def myself(self, request):
+        query = self.request.query_params
+
+        if query.get("user"):
+            self.queryset = User.objects.get(username__iexact=query.get("user"))
+            data = self.serializer_class(self.queryset)
+            return Response(data.data)
+
+        return Response({"error": "There is no user ID"})
+
     @action(
         detail=False,
         methods=["GET"],
