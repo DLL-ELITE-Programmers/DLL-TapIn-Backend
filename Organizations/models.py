@@ -20,5 +20,9 @@ class Department(CoreModel):
 class Organization(CoreModel):
     order = "organization_name"
 
+    organization_id = models.CharField(max_length=100, default="")
     organization_name = models.CharField(max_length=100, default="", blank=False)
     department = models.ManyToManyField(Department)
+
+    def __str__(self):
+        return f"{self.organization_id}"

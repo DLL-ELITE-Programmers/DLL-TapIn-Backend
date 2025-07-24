@@ -1,3 +1,4 @@
+from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
 from BaseAuth.views import BaseAuthModelViewset
@@ -6,11 +7,12 @@ from Organizations.serializers import OrganizationSerializer
 
 
 class OrganizationViewset(BaseAuthModelViewset):
+    permission_classes = [AllowAny]
     queryset = Organization.objects.filter()
     serializer_class = OrganizationSerializer
 
     def list(self, req, *args, **kwargs):
-        query = self.request.query_set
+        query = self.request.query_params
 
         data = self.serializer_class(self.queryset.all(), many=True)
         return Response(data.data)

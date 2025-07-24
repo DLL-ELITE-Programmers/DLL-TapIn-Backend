@@ -1,9 +1,11 @@
 from rest_framework.response import Response
-from rest_framework.viewsets import ModelViewSet
+
+from BaseAuth.views import BaseAuthModelViewset
 from Events.models import Participant
 from Events.serializers import ParticipantSerializer
 
-class ParticipantViewset(ModelViewSet):
+
+class ParticipantViewset(BaseAuthModelViewset):
     queryset = Participant.objects.filter()
     serializer_class = ParticipantSerializer
 
