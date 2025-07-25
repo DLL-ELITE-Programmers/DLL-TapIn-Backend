@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate
 from rest_framework.decorators import action
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import AccessToken, RefreshToken
 
@@ -23,7 +23,12 @@ class UserViewset(BaseAuthModelViewset):
             data = self.serializer_class(self.queryset.all(), many=True)
             return Response(data.data)
 
-    @action(detail=False, methods=["GET"], url_path="self")
+    @action(
+        detail=False,
+        methods=["GET"],
+        url_path="self",
+        permission_classes=[AllowAny],
+    )
     def myself(self, request):
         query = self.request.query_params
         if query.get("token"):
@@ -34,7 +39,7 @@ class UserViewset(BaseAuthModelViewset):
                 return Response(data.data)
             except Exception as e:
                 return Response({"error": str(e)})
-            return Response({"error": "There is no user ID"})
+        return Response({"error": "There is no user ID"})
 
     @action(
         detail=False,
