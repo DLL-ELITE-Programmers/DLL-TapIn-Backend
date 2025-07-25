@@ -10,32 +10,32 @@ from Organizations.models import Organization
 
 
 class EventViewset(BaseAuthModelViewset):
-  queryset = Event.objects.filter()
-  serializer_class = EventSerializers
+    queryset = Event.objects.filter()
+    serializer_class = EventSerializers
 
-  def list(self, req, *args, **kwargs):
-    query = self.request.query_params
+    def list(self, req, *args, **kwargs):
+        query = self.request.query_params
 
-    data = self.serializer_class(self.queryset.all(), many=True)
-    return Response(data.data)
+        data = self.serializer_class(self.queryset.all(), many=True)
+        return Response(data.data)
 
-  def create(self, request, *args, **kwargs):
-    try:
-      data = request.data
+    def create(self, request, *args, **kwargs):
+        try:
+            data = request.data
 
-      data["handler"] = Organization.objects.get(
-        organization_id=data["organization_id"]
-      ).id
+            data["handler"] = Organization.objects.get(
+                organization_id=data["organization_id"]
+            ).id
 
-      serialize = self.serializer_class(data, partial=True)
-      if serialize.is_valid():
-        serialize.save()
-        return Response(
-          {
-            "message": "Event addes successfully",
-            "event_information": serialize.data,
-          }
-        )
+            serialize = self.serializer_class(data, partial=True)
+            if serialize.is_valid():
+                serialize.save()
+                return Response(
+                    {
+                        "message": "Event addes successfully",
+                        "event_information": serialize.data,
+                    }
+                )
 
-    except Exception as e:
-      return Response({"error": self.extract_error_handler(e)})
+        except Exception as e:
+            return Response({"error": self.extract_error_handler(e)})
