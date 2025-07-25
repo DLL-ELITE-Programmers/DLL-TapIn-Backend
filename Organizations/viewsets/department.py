@@ -6,12 +6,12 @@ from rest_framework.response import Response
 
 
 class DepartmentViewset(BaseAuthModelViewset):
-    permission_classes = [AllowAny]
-    queryset = Department.objects.filter()
-    serializer_class = DepartmentSerializer
+  permission_classes = [AllowAny]
+  queryset = Department.objects.filter()
+  serializer_class = DepartmentSerializer
 
-    def list(self, req, *args, **kwargs):
-        query = self.request.query_params
+  def list(self, req, *args, **kwargs):
+    query = self.request.query_params
 
-        data = self.serializer_class(self.queryset, many=True)
-        return Response(data.data)
+    data = self.serializer_class(self.queryset, many=True)
+    return Response(data.data)

@@ -8,8 +8,8 @@ from Events.models import Event
 
 
 class Feedback(CoreModel):
-    order = "id"
+  order = "id"
 
-    user = models.ForeignKey(User, default="", on_delete=models.CASCADE)
-    event = models.ForeignKey(Event, default="", on_delete=models.CASCADE)
-    mesasge = models.TextField()
+  user = models.ForeignKey(User, default="", on_delete=models.CASCADE)
+  event = models.ForeignKey(Event, default="", on_delete=models.CASCADE)
+  mesasge = models.TextField()

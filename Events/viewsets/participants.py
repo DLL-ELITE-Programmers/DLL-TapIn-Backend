@@ -6,11 +6,11 @@ from Events.serializers import ParticipantSerializer
 
 
 class ParticipantViewset(BaseAuthModelViewset):
-    queryset = Participant.objects.filter()
-    serializer_class = ParticipantSerializer
+  queryset = Participant.objects.filter()
+  serializer_class = ParticipantSerializer
 
-    def list(self, req, *args, **kwargs):
-        query = self.request.query_params
+  def list(self, req, *args, **kwargs):
+    query = self.request.query_params
 
-        data = self.serializer_class(self.queryset.all(), many=True)
-        return Response(data.data)
+    data = self.serializer_class(self.queryset.all(), many=True)
+    return Response(data.data)
