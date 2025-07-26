@@ -13,7 +13,7 @@ class Organization(CoreModel):
     organization_name = models.CharField(max_length=100, default="", blank=False)
     department = models.ManyToManyField(Department)
 
-    officers = models.ManyToManyField(User)
+    officers = models.ManyToManyField(User, null=True)
 
     def __str__(self):
         return f"{self.organization_id}"
