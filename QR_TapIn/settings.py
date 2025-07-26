@@ -31,88 +31,89 @@ DEBUG = True
 # Application definition
 
 INSTALLED_APPS = [
-  "corsheaders",
-  "django.contrib.admin",
-  "django.contrib.auth",
-  "django.contrib.contenttypes",
-  "django.contrib.sessions",
-  "django.contrib.messages",
-  "django.contrib.staticfiles",
-  "rest_framework",
-  "rest_framework_simplejwt",
-  "core",
-  "Accounts",
-  "Events",
-  "Feedbacks",
-  "Organizations",
+    "corsheaders",
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "rest_framework",
+    "rest_framework_simplejwt",
+    "core",
+    "Accounts",
+    "Departments",
+    "Events",
+    "Feedbacks",
+    "Organizations",
 ]
 
 MIDDLEWARE = [
-  "corsheaders.middleware.CorsMiddleware",
-  "django.middleware.security.SecurityMiddleware",
-  "django.contrib.sessions.middleware.SessionMiddleware",
-  "django.middleware.common.CommonMiddleware",
-  # "django.middleware.csrf.CsrfViewMiddleware",
-  "django.contrib.auth.middleware.AuthenticationMiddleware",
-  "django.contrib.messages.middleware.MessageMiddleware",
-  "django.middleware.clickjacking.XFrameOptionsMiddleware",
-  "django.middleware.gzip.GZipMiddleware",
-  "whitenoise.middleware.WhiteNoiseMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    # "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django.middleware.gzip.GZipMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 REST_FRAMEWORK = {
-  "DEFAULT_AUTHENTICATION_CLASSES": [
-    "rest_framework_simplejwt.authentication.JWTAuthentication"
-  ],
-  "DEFAULT_PERMISSION_CLASSES": [],
-  "EXCEPTION_HANDLER": "BaseAuth.views.custom_not_authorized",
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework_simplejwt.authentication.JWTAuthentication"
+    ],
+    "DEFAULT_PERMISSION_CLASSES": [],
+    "EXCEPTION_HANDLER": "BaseAuth.views.custom_not_authorized",
 }
 
 SIMPLE_JWT = {
-  "ACCESS_TOKEN_LIFETIME": timedelta(minutes=600),
-  "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
-  "ROTATE_REFRESH_TOKENS": True,
-  "BLACKLIST_AFTER_ROTATION": True,
-  "UPDATE_LAST_LOGIN": True,
-  "ALGORITHM": "HS256",
-  "SIGNING_KEY": SECRET_KEY,
-  "VERIFYING_KEY": "",
-  "AUDIENCE": None,
-  "ISSUER": None,
-  "JSON_ENCODER": None,
-  "JWK_URL": None,
-  "LEEWAY": 0,
-  "AUTH_HEADER_TYPES": ("Bearer",),
-  "AUTH_HEADER_NAME": "HTTP_AUTHORIZATION",
-  "USER_ID_FIELD": "id",
-  "USER_ID_CLAIM": "user_id",
-  "USER_AUTHENTICATION_RULE": "rest_framework_simplejwt.authentication.default_user_authentication_rule",
-  "AUTH_TOKEN_CLASSES": ("rest_framework_simplejwt.tokens.AccessToken",),
-  "TOKEN_TYPE_CLAIM": "token_type",
-  "TOKEN_USER_CLASS": "rest_framework_simplejwt.models.TokenUser",
-  # note that modify the "BaseAuth.models.CustomTokenObtainPairSerializer" base on the path of this serializer
-  "TOKEN_OBTAIN_SERIALIZER": "BaseAuth.serializers.CustomTokenObtainPairSerializer",
-  "JTI_CLAIM": "jti",
-  "SLIDING_TOKEN_REFRESH_EXP_CLAIM": "refresh_exp",
-  "SLIDING_TOKEN_LIFETIME": timedelta(minutes=600),
-  "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=3),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=600),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
+    "ROTATE_REFRESH_TOKENS": True,
+    "BLACKLIST_AFTER_ROTATION": True,
+    "UPDATE_LAST_LOGIN": True,
+    "ALGORITHM": "HS256",
+    "SIGNING_KEY": SECRET_KEY,
+    "VERIFYING_KEY": "",
+    "AUDIENCE": None,
+    "ISSUER": None,
+    "JSON_ENCODER": None,
+    "JWK_URL": None,
+    "LEEWAY": 0,
+    "AUTH_HEADER_TYPES": ("Bearer",),
+    "AUTH_HEADER_NAME": "HTTP_AUTHORIZATION",
+    "USER_ID_FIELD": "id",
+    "USER_ID_CLAIM": "user_id",
+    "USER_AUTHENTICATION_RULE": "rest_framework_simplejwt.authentication.default_user_authentication_rule",
+    "AUTH_TOKEN_CLASSES": ("rest_framework_simplejwt.tokens.AccessToken",),
+    "TOKEN_TYPE_CLAIM": "token_type",
+    "TOKEN_USER_CLASS": "rest_framework_simplejwt.models.TokenUser",
+    # note that modify the "BaseAuth.models.CustomTokenObtainPairSerializer" base on the path of this serializer
+    "TOKEN_OBTAIN_SERIALIZER": "BaseAuth.serializers.CustomTokenObtainPairSerializer",
+    "JTI_CLAIM": "jti",
+    "SLIDING_TOKEN_REFRESH_EXP_CLAIM": "refresh_exp",
+    "SLIDING_TOKEN_LIFETIME": timedelta(minutes=600),
+    "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=3),
 }
 
 ROOT_URLCONF = "QR_TapIn.urls"
 
 TEMPLATES = [
-  {
-    "BACKEND": "django.template.backends.django.DjangoTemplates",
-    "DIRS": [],
-    "APP_DIRS": True,
-    "OPTIONS": {
-      "context_processors": [
-        "django.template.context_processors.request",
-        "django.contrib.auth.context_processors.auth",
-        "django.contrib.messages.context_processors.messages",
-      ],
+    {
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
+            ],
+        },
     },
-  },
 ]
 
 WSGI_APPLICATION = "QR_TapIn.wsgi.application"
@@ -132,22 +133,22 @@ CORS_ALLOW_METHODS = ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-  "default": {
-    "ENGINE": "django.db.backends.postgresql",
-    "NAME": "defaultdb",
-    "HOST": "pg-qrtapin-qrtapin.b.aivencloud.com",
-    "USER": "avnadmin",
-    "PASSWORD": "AVNS_Toc0HnIuBfZ_KAo1KF_",
-    "PORT": "24040",
-    "OPTIONS": {
-      "sslmode": "verify-full",
-      "sslrootcert": os.path.join(BASE_DIR, "certs", "aiven-ca.crt"),
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "defaultdb",
+        "HOST": "pg-qrtapin-qrtapin.b.aivencloud.com",
+        "USER": "avnadmin",
+        "PASSWORD": "AVNS_Toc0HnIuBfZ_KAo1KF_",
+        "PORT": "24040",
+        "OPTIONS": {
+            "sslmode": "verify-full",
+            "sslrootcert": os.path.join(BASE_DIR, "certs", "aiven-ca.crt"),
+        },
     },
-  },
-  "offline": {
-    "ENGINE": "django.db.backends.sqlite3",
-    "NAME": BASE_DIR / "db.sqlite3",
-  },
+    "offline": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    },
 }
 
 
@@ -155,18 +156,18 @@ DATABASES = {
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-  {
-    "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
-  },
-  {
-    "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
-  },
-  {
-    "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
-  },
-  {
-    "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
-  },
+    {
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+    },
 ]
 
 

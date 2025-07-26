@@ -1,15 +1,9 @@
 from rest_framework import serializers
 
-from Organizations.models import Department, Organization
-
-
-class DepartmentSerializer(serializers.ModelSerializer):
-  class Meta:
-    model = Department
-    fields = "__all__"
+from Organizations.models import Organization
 
 
 class OrganizationSerializer(serializers.ModelSerializer):
-  class Meta:
-    model = Organization
-    fields = "__all__"
+    class Meta:
+        model = Organization
+        fields = "__all__"

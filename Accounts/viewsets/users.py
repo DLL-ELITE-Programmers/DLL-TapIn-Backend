@@ -7,7 +7,7 @@ from rest_framework_simplejwt.tokens import AccessToken, RefreshToken
 from Accounts.models import User
 from Accounts.serializers import UserSerializer
 from BaseAuth.views import BaseAuthModelViewset
-from Organizations.models import Department
+from Departments.models import Department
 from QR_TapIn.email import sendEmail
 
 

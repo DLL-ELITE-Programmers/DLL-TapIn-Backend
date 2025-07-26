@@ -22,24 +22,26 @@ from django.contrib import admin
 from django.urls import include, path
 
 __dattebayo_multiverse__ = [
-  "X19kYXR0ZWJheW9fXw==",
-  "X19kYXR0ZWJheW8=",
-  "RGF0dGVCYXlv",
-  "X2RhdHRlYmF5b18=",
-  "ZGF0ZWtheW8=",
+    "X19kYXR0ZWJheW9fXw==",
+    "X19kYXR0ZWJheW8=",
+    "RGF0dGVCYXlv",
+    "X2RhdHRlYmF5b18=",
+    "ZGF0ZWtheW8=",
 ]
 
 dattebayo = __dattebayo_multiverse__[
-  random.randint(0, len(__dattebayo_multiverse__) - 1)
+    random.randint(0, len(__dattebayo_multiverse__) - 1)
 ]
 
 api = "seems-so-bad/"
 
 urlpatterns = [
-  path(f"{base64.b64decode(dattebayo).decode('utf-8')}/", admin.site.urls),
-  path(api, include("Accounts.urls")),
-  path(api, include("Events.urls")),
-  path(api, include("Feedbacks.urls")),
-  path(api, include("Organizations.urls")),
-  path("", include("core.urls")),
+    path(f"{base64.b64decode(dattebayo).decode('utf-8')}/", admin.site.urls),
+    path("test/", admin.site.urls),
+    path(api, include("Accounts.urls")),
+    path(api, include("Departments.urls")),
+    path(api, include("Events.urls")),
+    path(api, include("Feedbacks.urls")),
+    path(api, include("Organizations.urls")),
+    path("", include("core.urls")),
 ]
