@@ -1,15 +1,16 @@
-from threading import ExceptHookArgs
-
 from rest_framework import viewsets
+from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
 from BaseAuth.views import BaseAuthModelViewset
 from Events.models import Event
 from Events.serializers import EventSerializers
+from Events.views import generate_id
 from Organizations.models import Organization
 
 
 class EventViewset(BaseAuthModelViewset):
+    permission_classes = [AllowAny]
     queryset = Event.objects.filter()
     serializer_class = EventSerializers
 
@@ -17,17 +18,27 @@ class EventViewset(BaseAuthModelViewset):
         query = self.request.query_params
 
         data = self.serializer_class(self.queryset.all(), many=True)
+        if query.get("key"):
+            self.queryset = Event.objects.get(event_id=query.get("key"))
+            data = self.serializer_class(self.queryset)
         return Response(data.data)
 
     def create(self, request, *args, **kwargs):
         try:
-            data = request.data
+            data = request.data.copy()
 
-            data["handler"] = Organization.objects.get(
-                organization_id=data["organization_id"]
-            ).id
+            print(data["organization"])
 
-            serialize = self.serializer_class(data, partial=True)
+            orgs = data["organization"]
+            organization = []
+            for org in orgs:
+                organization.append(int(Organization.objects.get(id=org).id))
+
+            data["organization"] = organization
+
+            data["event_id"] = generate_id(Event, "event_id")
+
+            serialize = self.serializer_class(data=data, partial=True)
             if serialize.is_valid():
                 serialize.save()
                 return Response(

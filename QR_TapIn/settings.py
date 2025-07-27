@@ -136,9 +136,9 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "defaultdb",
-        "HOST": "pg-qrtapin-qrtapin.b.aivencloud.com",
+        "HOST": "pg-dlltapin-qrtapin.i.aivencloud.com",
         "USER": "avnadmin",
-        "PASSWORD": "AVNS_Toc0HnIuBfZ_KAo1KF_",
+        "PASSWORD": "AVNS_rvwAM_3j8tbwNhInC16",
         "PORT": "24040",
         "OPTIONS": {
             "sslmode": "verify-full",
