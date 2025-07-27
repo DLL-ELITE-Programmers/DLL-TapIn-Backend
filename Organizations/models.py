@@ -11,9 +11,9 @@ class Organization(CoreModel):
 
     organization_id = models.CharField(max_length=100, default="")
     organization_name = models.CharField(max_length=100, default="", blank=False)
-    department = models.ManyToManyField(Department)
+    department = models.ManyToManyField(Department, default="")
 
-    officers = models.ManyToManyField(User, null=True)
+    # officers = models.ManyToManyField(User, related_name="organization")
 
     def __str__(self):
         return f"{self.organization_id}"
