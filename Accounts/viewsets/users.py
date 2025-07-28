@@ -12,6 +12,7 @@ from QR_TapIn.email import sendEmail
 
 
 class UserViewset(BaseAuthModelViewset):
+    permission_classes = [AllowAny]
     queryset = User.objects.filter()
     serializer_class = UserSerializer
 

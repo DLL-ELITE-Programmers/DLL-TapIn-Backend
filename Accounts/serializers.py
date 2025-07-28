@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from Accounts.models import User
-
+from Departments.serializers import DepartmentSerializer
 
 class UserSerializer(serializers.ModelSerializer):
     department_info = serializers.SerializerMethodField()

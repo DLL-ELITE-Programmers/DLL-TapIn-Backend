@@ -1,7 +1,7 @@
 from rest_framework import serializers
-
+from Accounts.models import User
 from Events.models import Event, Participant
-
+from Departments.serializers import DepartmentSerializer
 
 class EventSerializers(serializers.ModelSerializer):
     class Meta:
@@ -16,10 +16,28 @@ class ParticipantSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Participant
-        fields = ["event_info", "participant_info"]
+        fields = "__all__"
 
     def get_event_info(self, obj):
-        return Event.objects.get(obj)
+        event_ = Event.objects.get(event_id=obj.event)
+        return {
+            "event_name": event_.event_name,
+            "event_description": event_.event_description,
+            "event_venue": event_.event_venue
+        }
 
     def get_participant_info(self, obj):
-        return Participant.objects.get(obj)
+        print(obj.participant)
+        participant_ = User.objects.get(username=obj.participant)
+        
+        dept = "Sana ako na lang"
+        if participant_.department:
+            dept = DepartmentSerializer(participant_.department).data
+
+        return {
+            "username": participant_.username,
+            "first_name": participant_.first_name,
+            "middle_name": participant_.middle_name,
+            "last_name": participant_.last_name,
+            "department": dept
+        }

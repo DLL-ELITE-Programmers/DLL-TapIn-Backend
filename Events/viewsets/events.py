@@ -15,14 +15,19 @@ class EventViewset(BaseAuthModelViewset):
     serializer_class = EventSerializers
 
     def list(self, req, *args, **kwargs):
-        query = self.request.query_params
+        try:
+            query = self.request.query_params
 
-        data = self.serializer_class(self.queryset.all(), many=True)
-        if query.get("key"):
-            self.queryset = Event.objects.get(event_id=query.get("key"))
-            data = self.serializer_class(self.queryset)
-        return Response(data.data)
-
+            data = self.serializer_class(self.queryset.all(), many=True)
+            if query.get("key"):
+                self.queryset = Event.objects.get(event_id=query.get("key"))
+                data = self.serializer_class(self.queryset)
+            return Response(data.data)
+        except Exception as e:
+            return Response({
+                "error": "Event code not found"
+            })
+        
     def create(self, request, *args, **kwargs):
         try:
             data = request.data.copy()

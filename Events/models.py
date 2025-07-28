@@ -28,7 +28,7 @@ class Event(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"{self.event_id} - {self.event_name}"
+        return self.event_id
 
 
 class Participant(models.Model):

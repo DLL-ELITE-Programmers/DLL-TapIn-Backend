@@ -27,7 +27,7 @@ class User(AbstractUser):
 
     def __str__(self):
         #     return self.id
-        return f"{self.last_name}, {self.first_name}"
+        return self.username
 
     def save(self, *args, **kwargs):
         self.username = self.username.upper()
