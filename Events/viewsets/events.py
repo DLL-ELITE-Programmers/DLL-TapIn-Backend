@@ -2,9 +2,10 @@ from rest_framework import viewsets
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
+from Accounts.models import User
 from BaseAuth.views import BaseAuthModelViewset
-from Events.models import Event
-from Events.serializers import EventSerializers
+from Events.models import Event, Participant
+from Events.serializers import EventSerializers, ParticipantSerializer
 from Events.views import generate_id
 from Organizations.models import Organization
 
@@ -24,10 +25,8 @@ class EventViewset(BaseAuthModelViewset):
                 data = self.serializer_class(self.queryset)
             return Response(data.data)
         except Exception as e:
-            return Response({
-                "error": "Event code not found"
-            })
-        
+            return Response({"error": "Event code not found"})
+
     def create(self, request, *args, **kwargs):
         try:
             data = request.data.copy()

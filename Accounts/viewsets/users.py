@@ -20,10 +20,10 @@ class UserViewset(BaseAuthModelViewset):
         query = self.request.query_params
         data = self.serializer_class(self.queryset.all(), many=True)
         if query.get("user"):
-            self.queryset = User.objects.filter(username__iexact=query.get("user"))
-
-            data = self.serializer_class(self.queryset.all(), many=True)
+            self.queryset = User.objects.get(username__iexact=query.get("user"))
+            data = self.serializer_class(self.queryset)
             return Response(data.data)
+
         return Response(data.data)
 
     @action(
