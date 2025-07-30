@@ -1,11 +1,15 @@
+import pandas as pd
+from django.http import HttpResponse
+from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
 from Accounts.models import User
+from BaseAuth.paginator import TenRowPaginator
 from BaseAuth.views import BaseAuthModelViewset
 from Events.models import Event, Participant
 from Events.serializers import ParticipantSerializer
-from BaseAuth.paginator import TenRowPaginator
+
 
 class ParticipantViewset(BaseAuthModelViewset):
     permission_classes = [AllowAny]
@@ -24,22 +28,17 @@ class ParticipantViewset(BaseAuthModelViewset):
             if query.get("user"):
                 userID = User.objects.get(username=query.get("user").upper()).id
                 self.queryset = Participant.objects.filter(participant__exact=userID)
-            
+
             page = self.paginate_queryset(self.queryset)
 
             if page:
                 data = self.serializer_class(page, many=True)
                 data = self.get_paginated_response(data.data)
                 return data
-            
+
             data = self.serializer_class(self.queryset.all(), many=True)
-                        
-            return Response(
-                {
-                    "total": self.queryset.count(),
-                    "data": data.data
-                }
-            )
+
+            return Response({"total": self.queryset.count(), "data": data.data})
 
         except Exception as e:
             return Response({"error": str(e)})
@@ -66,3 +65,28 @@ class ParticipantViewset(BaseAuthModelViewset):
             return Response({"error": self.extract_error_handler(serialize.errors)})
         except Exception as e:
             return Response({"error": str(e)})
+
+    @action(
+        detail=False, url_path="export", methods=["GET"], permission_classes=[AllowAny]
+    )
+    def record(self, request):
+        query = self.request.query_params
+
+        try:
+            if query.get("event"):
+                participant = Participant.objects.filter(event=query.get("event"))
+                if not participant:
+                    raise Exception("Invalid event")
+                data = self.serializer_class(participant.all(), many=True)
+                dataframe = pd.DataFrame(data.data)
+                response = HttpResponse(
+                    content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                )
+                response["Content-Disposition"] = (
+                    'attachmetn; filename="participants.xlsx"'
+                )
+                dataframe.to_excel(response, index=False)
+                return response
+        except Exception as e:
+            return Response({"error": str(e)})
+        return Response({"error": "Event is invalid"})
