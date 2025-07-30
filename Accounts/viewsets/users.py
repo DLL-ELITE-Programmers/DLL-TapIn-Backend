@@ -1,3 +1,4 @@
+import re
 from django.contrib.auth import authenticate
 from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny, IsAuthenticated
@@ -64,6 +65,12 @@ class UserViewset(BaseAuthModelViewset):
         password = data.get("password")
         if not username or not password:
             return Response({"error": "Please provide Student ID and/or Password"})
+        user_id_pattern = re.fullmatch("^(\d+[a-zA-Z]{1})-(\d+)$", data.get("username"))
+        if not user_id_pattern:
+            return Response({
+                "error": "Invalid Student ID"
+            })
+        
         username = username.upper()
         user_data = authenticate(username=username, password=password)
         if not user_data:
@@ -96,6 +103,11 @@ class UserViewset(BaseAuthModelViewset):
             data = request.data
             if not data["student_id"] or not data["password"]:
                 return Response({"error": "Please provide your information"})
+            user_id_pattern = re.fullmatch("^(\d+[a-zA-Z]{1})-(\d+)$", data.get("student_id"))
+            if not user_id_pattern:
+                return Response({
+                    "error": "Invalid Student ID"
+                })
             data["username"] = data.get("student_id").upper()
             dept = Department.objects.get(
                 department_id__iexact=data.get("department_id")
