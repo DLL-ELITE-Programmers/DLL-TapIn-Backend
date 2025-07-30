@@ -77,8 +77,15 @@ class ParticipantViewset(BaseAuthModelViewset):
                 participant = Participant.objects.filter(event=query.get("event"))
                 if not participant:
                     raise Exception("Invalid event")
-                data = self.serializer_class(participant.all(), many=True)
-                dataframe = pd.DataFrame(data.data)
+
+                data = self.serializer_class(participant.all(), many=True).data
+                info = [
+                    item["participant_info"]
+                    for item in data
+                    if "participant_info" in item
+                ]
+
+                dataframe = pd.DataFrame(info)
                 response = HttpResponse(
                     content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
                 )
