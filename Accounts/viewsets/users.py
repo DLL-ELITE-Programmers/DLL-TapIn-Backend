@@ -60,7 +60,7 @@ class UserViewset(BaseAuthModelViewset):
     )
     def login(self, request):
         data = request.data
-        username = data.get("username")
+        username = data.get("username").strip()
         password = data.get("password")
         if not username or not password:
             return Response({"error": "Please provide Student ID and/or Password"})
