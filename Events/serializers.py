@@ -27,7 +27,6 @@ class ParticipantSerializer(serializers.ModelSerializer):
         }
 
     def get_participant_info(self, obj):
-        print(obj.participant)
         participant_ = User.objects.get(username=obj.participant)
         
         dept = "Sana ako na lang"

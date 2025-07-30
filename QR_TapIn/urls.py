@@ -37,7 +37,7 @@ api = "seems-so-bad/"
 
 urlpatterns = [
     path(f"{base64.b64decode(dattebayo).decode('utf-8')}/", admin.site.urls),
-    path("__--__/", admin.site.urls),
+    path("=_=/", admin.site.urls),
     path(api, include("Accounts.urls")),
     path(api, include("Departments.urls")),
     path(api, include("Events.urls")),

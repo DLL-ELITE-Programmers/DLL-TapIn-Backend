@@ -5,12 +5,13 @@ from Accounts.models import User
 from BaseAuth.views import BaseAuthModelViewset
 from Events.models import Event, Participant
 from Events.serializers import ParticipantSerializer
-
+from BaseAuth.paginator import TenRowPaginator
 
 class ParticipantViewset(BaseAuthModelViewset):
     permission_classes = [AllowAny]
     queryset = Participant.objects.filter()
     serializer_class = ParticipantSerializer
+    pagination_class = TenRowPaginator
 
     def list(self, req, *args, **kwargs):
         try:
@@ -25,7 +26,14 @@ class ParticipantViewset(BaseAuthModelViewset):
                 self.queryset = Participant.objects.filter(participant__exact=userID)
 
             data = self.serializer_class(self.queryset.all(), many=True)
-            return Response(data.data)
+            # return Response(data.data)
+            return Response(
+                {
+                    "total": self.queryset.count(),
+                    "data": data.data
+                }
+            )
+
 
         except Exception as e:
             return Response({"error": str(e)})
