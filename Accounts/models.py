@@ -35,6 +35,7 @@ class User(AbstractUser):
         if self.middle_name:
             self.middle_name = self.middle_name.upper()
         self.last_name = self.last_name.upper()
+        self.email = self.email.lower()
         super().save(*args, **kwargs)
 
     class Meta:
