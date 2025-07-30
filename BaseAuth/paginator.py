@@ -35,7 +35,7 @@ class BasicCustomPaginator(PageNumberPagination):
 
 
 class TenRowPaginator(PageNumberPagination):
-  page_size = 1
+  page_size = 10
   # max_page_size = 5000
   # display_page_controls = 10
 

@@ -24,16 +24,22 @@ class ParticipantViewset(BaseAuthModelViewset):
             if query.get("user"):
                 userID = User.objects.get(username=query.get("user").upper()).id
                 self.queryset = Participant.objects.filter(participant__exact=userID)
+            
+            page = self.paginate_queryset(self.queryset)
 
+            if page:
+                data = self.serializer_class(page, many=True)
+                data = self.get_paginated_response(data.data)
+                return data
+            
             data = self.serializer_class(self.queryset.all(), many=True)
-            # return Response(data.data)
+                        
             return Response(
                 {
                     "total": self.queryset.count(),
                     "data": data.data
                 }
             )
-
 
         except Exception as e:
             return Response({"error": str(e)})

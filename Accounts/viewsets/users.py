@@ -25,7 +25,21 @@ class UserViewset(BaseAuthModelViewset):
             data = self.serializer_class(self.queryset)
             return Response(data.data)
 
-        return Response(data.data)
+        if query.get("id"):
+            self.queryset = User.objects.filter(username__startswith=query.get("id"))
+        
+        page = self.paginate_queryset(self.queryset)
+        if page:
+                data = self.serializer_class(page, many=True)
+                data = self.get_paginated_response(data.data)
+                return data
+        
+        data = self.serializer_class(self.queryset.all(), many=True)
+
+        return Response({
+            "count": self.queryset.count(),
+            "data": data.data
+        })
 
     @action(
         detail=False,
