@@ -90,7 +90,7 @@ class ParticipantViewset(BaseAuthModelViewset):
                     content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
                 )
                 response["Content-Disposition"] = (
-                    'attachmetn; filename="participants.xlsx"'
+                    'attachment; filename="participants.xlsx"'
                 )
                 dataframe.to_excel(response, index=False)
                 return response
