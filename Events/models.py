@@ -1,5 +1,5 @@
 from django.db import models
-from django.utils.timezone import datetime
+from BaseAuth.models import CoreModelDescending
 
 from Accounts.models import User
 from Events.views import generate_id
@@ -31,8 +31,10 @@ class Event(models.Model):
         return self.event_id
 
 
-class Participant(models.Model):
+class Participant(CoreModelDescending):
+    order = "time_in"
+
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     participant = models.ForeignKey(User, on_delete=models.CASCADE)
-    time_in = models.DateField(auto_now_add=True)
-    time_in = models.DateField(auto_now=True)
+    time_in = models.DateTimeField(auto_now_add=True)
+    time_out = models.DateTimeField(auto_now=True)

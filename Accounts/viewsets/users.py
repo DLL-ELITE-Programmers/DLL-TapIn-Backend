@@ -20,6 +20,7 @@ class UserViewset(BaseAuthModelViewset):
     def list(self, req, *args, **kwargs):
         query = self.request.query_params
         data = self.serializer_class(self.queryset.all(), many=True)
+        
         if query.get("user"):
             self.queryset = User.objects.get(username__iexact=query.get("user"))
             data = self.serializer_class(self.queryset)
@@ -29,6 +30,7 @@ class UserViewset(BaseAuthModelViewset):
             self.queryset = User.objects.filter(username__startswith=query.get("id"))
         
         page = self.paginate_queryset(self.queryset)
+
         if page:
                 data = self.serializer_class(page, many=True)
                 data = self.get_paginated_response(data.data)

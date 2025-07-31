@@ -4,7 +4,9 @@ from Accounts.models import User
 from Departments.serializers import DepartmentSerializer
 
 class UserSerializer(serializers.ModelSerializer):
-    department_info = serializers.SerializerMethodField()
+    department_id = serializers.SerializerMethodField()
+    department_name = serializers.SerializerMethodField()
+    sex_display = serializers.SerializerMethodField()
 
     class Meta:
         model = User
@@ -13,10 +15,10 @@ class UserSerializer(serializers.ModelSerializer):
             "first_name",
             "middle_name",
             "last_name",
-            "sex",
+            "sex_display",
             "email",
-            "department",
-            "department_info",
+            "department_id",
+            "department_name",
             "is_superuser",
             "password",
         ]
@@ -38,8 +40,17 @@ class UserSerializer(serializers.ModelSerializer):
         user.set_password(validated_data["password"])
         user.save()
         return user
+    
+    def get_sex_display(self, obj):
+        sex = ["Female", "Male", "Others"]
+        return sex[obj.sex]
 
-    def get_department_info(self, obj):
+    def get_department_id(self, obj):
         if obj.department:
-            return DepartmentSerializer(obj.department).data
+            return DepartmentSerializer(obj.department).data.get("department_id")
+        return "Sana ako na lang"
+    
+    def get_department_name(self, obj):
+        if obj.department:
+            return DepartmentSerializer(obj.department).data.get("department_name")
         return "Sana ako na lang"

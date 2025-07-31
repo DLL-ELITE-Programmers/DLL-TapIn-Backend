@@ -25,9 +25,10 @@ class ParticipantViewset(BaseAuthModelViewset):
                 self.queryset = Participant.objects.filter(
                     event__exact=query.get("event")
                 )
+            
             if query.get("user"):
                 userID = User.objects.get(username=query.get("user").upper()).id
-                self.queryset = Participant.objects.filter(participant__exact=userID)
+                self.queryset = Participant.objects.filter(participant=userID)
 
             page = self.paginate_queryset(self.queryset)
 
