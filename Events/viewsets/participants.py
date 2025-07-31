@@ -74,7 +74,8 @@ class ParticipantViewset(BaseAuthModelViewset):
 
         try:
             if query.get("event"):
-                participant = Participant.objects.filter(event=query.get("event"))
+                event_id = query.get("event")
+                participant = Participant.objects.filter(event=event_id)
                 if not participant:
                     raise Exception("Invalid event")
 
@@ -90,7 +91,7 @@ class ParticipantViewset(BaseAuthModelViewset):
                     content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
                 )
                 response["Content-Disposition"] = (
-                    'attachment; filename="participants.xlsx"'
+                    f'attachment; filename="participants-{event_id}.xlsx"'
                 )
                 dataframe.to_excel(response, index=False)
                 return response

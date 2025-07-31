@@ -34,9 +34,10 @@ class ParticipantSerializer(serializers.ModelSerializer):
             dept = DepartmentSerializer(participant_.department).data
 
         return {
-            "username": participant_.username,
+            "student_id": participant_.username,
             "first_name": participant_.first_name,
             "middle_name": participant_.middle_name,
             "last_name": participant_.last_name,
-            "department": dept
+            "department_id": dept.get("department_id"),
+            "department_name": dept.get("department_name")
         }
