@@ -2,6 +2,8 @@ from rest_framework import serializers
 from Accounts.models import User
 from Events.models import Event, Participant
 from Departments.serializers import DepartmentSerializer
+from datetime import datetime
+
 
 class EventSerializers(serializers.ModelSerializer):
     class Meta:
@@ -29,9 +31,14 @@ class ParticipantSerializer(serializers.ModelSerializer):
     def get_participant_info(self, obj):
         participant_ = User.objects.get(username=obj.participant)
         
-        dept = "Sana ako na lang"
+        dept = {
+            "department_id": "unknown",
+            "department_name": "Sana ako na lang"
+        }
         if participant_.department:
             dept = DepartmentSerializer(participant_.department).data
+        
+        year_level = (datetime.now().year - int(participant_.username[:3]) - 2000) + 1
 
         return {
             "student_id": participant_.username,
@@ -39,5 +46,6 @@ class ParticipantSerializer(serializers.ModelSerializer):
             "middle_name": participant_.middle_name,
             "last_name": participant_.last_name,
             "department_id": dept.get("department_id"),
-            "department_name": dept.get("department_name")
+            "department_name": dept.get("department_name"),
+            "year_level": year_level
         }
