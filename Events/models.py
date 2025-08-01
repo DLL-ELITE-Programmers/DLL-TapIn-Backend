@@ -1,7 +1,7 @@
 from django.db import models
-from BaseAuth.models import CoreModelDescending
 
 from Accounts.models import User
+from BaseAuth.models import CoreModelDescending
 from Events.views import generate_id
 from Organizations.models import Organization
 
@@ -19,8 +19,6 @@ class Event(models.Model):
     event_description = models.TextField()
     event_venue = models.CharField(max_length=100, default="", null=False)
     organization = models.ManyToManyField(Organization)
-    # time_in = models.DateTimeField(default=datetime.now())
-    # time_out = models.DateTimeField(default=datetime.now())
 
     def save(self, *args, **kwargs):
         if not self.event_id:
