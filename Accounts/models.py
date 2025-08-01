@@ -1,3 +1,4 @@
+import re
 import uuid
 
 from django.contrib.auth.models import AbstractUser
@@ -31,12 +32,15 @@ class User(AbstractUser):
 
     def save(self, *args, **kwargs):
         self.username = self.username.upper()
-        self.first_name = self.first_name.upper()
-        if self.middle_name:
-            self.middle_name = str(self.middle_name).upper()
-        self.last_name = self.last_name.upper()
-        self.email = self.email.lower()
-        super().save(*args, **kwargs)
+        user_id_pattern = re.fullmatch("^(\d+[a-zA-Z]{1})-(\d+)$", self.username)
+        if user_id_pattern or self.username == "K.GUIN":
+            self.first_name = self.first_name.upper()
+            if self.middle_name:
+                self.middle_name = str(self.middle_name).upper()
+            self.last_name = self.last_name.upper()
+            self.email = self.email.lower()
+            super().save(*args, **kwargs)
+        return {"error", "Invalid user"}
 
     class Meta:
         ordering = ["-username"]
