@@ -33,7 +33,7 @@ class User(AbstractUser):
         self.username = self.username.upper()
         self.first_name = self.first_name.upper()
         if self.middle_name:
-            self.middle_name = self.middle_name.upper()
+            self.middle_name = str(self.middle_name).upper()
         self.last_name = self.last_name.upper()
         self.email = self.email.lower()
         super().save(*args, **kwargs)
