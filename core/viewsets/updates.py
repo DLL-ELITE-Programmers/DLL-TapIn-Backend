@@ -34,6 +34,7 @@ class TermsAndCondition(APIView):
                 "terms": {
                     "intro": "DLL TapIn is an attendance monitoring system developed under DLL BSIT Department. We (as developers) wanted to know you as you use this application, you're agreed with our terms and conditions, as well as how we use the data and information gather from the application",
                     "sub": {
+                        "Liability": "We (the developers) are the liable once all the information are leaked, but we are not the liable one once your account was hacked. It's everyone's responsible to also protect their own as their own security",
                         "Data Gathering": "We (as developers) wanted you to know that the we gather data to monitor each activities for improvement, this is to let know the organizers (organization officers) how do they improve an event they created. Also we use the data for statistical studies, such as which course, year and section, as well as organizations are active in each events.",
                         "End-User Agreement": "You (as student) must know these terms as you must not have complains regarding to the information given.",
                         "Feedback": "Any kind of problem, issues, as well as the design problem must be reported as part of the development. We will value your insights and suggestions. We prefer to gather negative feedback, but use appropiate words and prevent vulgar words.",
