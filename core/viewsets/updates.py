@@ -14,14 +14,17 @@ class UpdatesAPI(APIView):
                         "Walang bago, ikaw pa rin",
                         "Added Auto update",
                         "Fixed typo [department -> sex]",
+                        "Added signup information verification",
+                        "Added Student ID verification",
+                        "Added some buttons [for test]",
                     ]
                 },
-                "link": "https://google.com",
+                "link": "https://expo.dev/artifacts/eas/76sAUMzFF2Amrw48upnk7e.apk",
                 # NOTE: This key is very important for future updates
                 # TODO: Just add one if the update is required to the specific version
                 # given to the application. This is to make the least version of require
                 # version, meaning, not the actual version but only the required version
-                "require": 0,
+                "require": -1,
             }
         )
 
