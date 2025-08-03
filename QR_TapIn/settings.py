@@ -133,22 +133,22 @@ CORS_ALLOW_METHODS = ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    # "a": {
-    #     "ENGINE": "django.db.backends.postgresql",
-    #     "NAME": "defaultdb",
-    #     "HOST": "pg-dlltapin-qrtapin.i.aivencloud.com",
-    #     "USER": "avnadmin",
-    #     "PASSWORD": "AVNS_rvwAM_3j8tbwNhInC16",
-    #     "PORT": "24040",
-    #     "OPTIONS": {
-    #         "sslmode": "verify-full",
-    #         "sslrootcert": os.path.join(BASE_DIR, "certs", "aiven-ca.crt"),
-    #     },
-    # },
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "defaultdb",
+        "HOST": "pg-dlltapin-qrtapin.d.aivencloud.com",
+        "USER": "avnadmin",
+        "PASSWORD": "AVNS_yOZfsG3PrJNMaBJqoJz",
+        "PORT": "24040",
+        "OPTIONS": {
+            "sslmode": "verify-full",
+            "sslrootcert": os.path.join(BASE_DIR, "certs", "aiven-ca.crt"),
+        },
     },
+    # "default": {
+    #     "ENGINE": "django.db.backends.sqlite3",
+    #     "NAME": BASE_DIR / "db.sqlite3",
+    # },
 }
 
 

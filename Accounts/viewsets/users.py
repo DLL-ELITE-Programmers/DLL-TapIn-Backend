@@ -20,7 +20,7 @@ class UserViewset(BaseAuthModelViewset):
     def list(self, req, *args, **kwargs):
         query = self.request.query_params
         data = self.serializer_class(self.queryset.all(), many=True)
-        
+
         if query.get("user"):
             self.queryset = User.objects.get(username__iexact=query.get("user"))
             data = self.serializer_class(self.queryset)
@@ -28,20 +28,27 @@ class UserViewset(BaseAuthModelViewset):
 
         if query.get("id"):
             self.queryset = User.objects.filter(username__startswith=query.get("id"))
-        
+
         page = self.paginate_queryset(self.queryset)
 
         if page:
-                data = self.serializer_class(page, many=True)
-                data = self.get_paginated_response(data.data)
-                return data
-        
+            data = self.serializer_class(page, many=True)
+            data = self.get_paginated_response(data.data)
+            return data
+
         data = self.serializer_class(self.queryset.all(), many=True)
 
-        return Response({
-            "count": self.queryset.count(),
-            "data": data.data
-        })
+        return Response({"count": self.queryset.count(), "data": data.data})
+
+    def update(self, request, *args, **kwargs):
+        # try:
+        instance = self.get_object()
+
+        data = request.data
+        return Response({"message": str(instance)})
+        # except:
+        #     pass
+        return super().update(request, *args, **kwargs)
 
     @action(
         detail=False,
@@ -81,12 +88,12 @@ class UserViewset(BaseAuthModelViewset):
         password = data.get("password")
         if not username or not password:
             return Response({"error": "Please provide Student ID and/or Password"})
-        user_id_pattern = re.fullmatch("^(\d+[a-zA-Z]{1})-(\d+)$", data.get("username"))
+        user_id_pattern = re.fullmatch(
+            r"^(\d+[a-zA-Z]{1})-(\d+)$", data.get("username")
+        )
         if not user_id_pattern:
-            return Response({
-                "error": "Invalid Student ID"
-            })
-        
+            return Response({"error": "Invalid Student ID"})
+
         username = username.upper()
         user_data = authenticate(username=username, password=password)
         if not user_data:
@@ -119,11 +126,11 @@ class UserViewset(BaseAuthModelViewset):
             data = request.data
             if not data["student_id"] or not data["password"]:
                 return Response({"error": "Please provide your information"})
-            user_id_pattern = re.fullmatch("^(\d+[a-zA-Z]{1})-(\d+)$", data.get("student_id"))
+            user_id_pattern = re.fullmatch(
+                r"^(\d+[a-zA-Z]{1})-(\d+)$", data.get("student_id")
+            )
             if not user_id_pattern:
-                return Response({
-                    "error": "Invalid Student ID"
-                })
+                return Response({"error": "Invalid Student ID"})
             data["username"] = data.get("student_id").upper()
             dept = Department.objects.get(
                 department_id__iexact=data.get("department_id")

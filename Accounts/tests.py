@@ -6,6 +6,7 @@ from rest_framework.views import APIView, Response
 from Accounts.models import User
 from Departments.models import Department
 from Events.models import Event, Participant
+from Organizations.models import Organization
 
 # Create your tests here.
 
@@ -19,6 +20,20 @@ def dept():
         )
         deptm.save()
         print(row["department_id"])
+    return Response({"message": "done"})
+
+
+def orgs():
+    data = pd.read_csv("backup_data/Export/org.csv", sep=";")
+    # rd;organization_id;organization_name
+    # id;department_id;department_name
+    for _, row in data.iterrows():
+        deptm = Organization(
+            organization_id=row["organization_id"],
+            organization_name=row["organization_name"],
+        )
+        deptm.save()
+        print(row["organization_id"])
     return Response({"message": "done"})
 
 
@@ -56,7 +71,6 @@ def participants():
 class UserTest(APIView):
     def get(self, req):
         return participants()
-
         tables = [
             "password",
             "last_login",

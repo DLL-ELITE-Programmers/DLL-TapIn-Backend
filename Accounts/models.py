@@ -32,7 +32,7 @@ class User(AbstractUser):
 
     def save(self, *args, **kwargs):
         self.username = self.username.upper()
-        user_id_pattern = re.fullmatch("^(\d+[a-zA-Z]{1})-(\d+)$", self.username)
+        user_id_pattern = re.fullmatch(r"^(\d+[a-zA-Z]{1})-(\d+)$", self.username)
         if user_id_pattern or self.username == "K.GUIN":
             self.first_name = self.first_name.upper()
             if self.middle_name:
