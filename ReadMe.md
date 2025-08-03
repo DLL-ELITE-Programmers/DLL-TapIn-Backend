@@ -25,11 +25,26 @@ pip install -r requirements.txt
 
 ---
 
+### For testing with frontend
+
+```
+python manage.py runserver 0.0.0.0:8000
+
+```
+
+---
+
 ### Contributors
 
-1. [Abdul Barry Adam](https://github.com/warebar)
-2. [Kurt Cyrus Atoat](https://github.com/kurtatoat)
-3. [Peter Paul Eclavea](https://github.com/lpeter29)
-4. [Bernard Gabito](https://github.com/brrnrd)
-5. [Rogemson Molina](https://github.com/Rogemson)
-6. [Ryann Kim Sesgundo](https://github.com/RyannKim327)
+1. [Abdul Barry Adam](https://github.com/warebar) -> Mamaw sa backend
+2. [Kurt Cyrus Atoat](https://github.com/kurtatoat) -> Head designer
+3. [Peter Paul Eclavea](https://github.com/lpeter29) -> Tester 2
+4. [Bernard Gabito](https://github.com/brrnrd) -> Tester 1
+5. [Rogemson Molina](https://github.com/Rogemson) -> Mamaw sa design
+6. [Ryann Kim Sesgundo](https://github.com/RyannKim327) -> Tambay
+
+---
+
+### Security and Vulnerability Tester
+
+> Still looking
