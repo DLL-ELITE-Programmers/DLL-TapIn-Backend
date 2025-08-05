@@ -24,7 +24,7 @@ class UpdatesAPI(APIView):
                 # TODO: Just add one if the update is required to the specific version
                 # given to the application. This is to make the least version of require
                 # version, meaning, not the actual version but only the required version
-                "require": -1,
+                "require": 0,
             }
         )
 

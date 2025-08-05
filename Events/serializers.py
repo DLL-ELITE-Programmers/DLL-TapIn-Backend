@@ -21,6 +21,7 @@ class ParticipantSerializer(serializers.ModelSerializer):
     class Meta:
         model = Participant
         fields = [
+            "event",
             "event_info",
             "participant_info",
             "time_in",

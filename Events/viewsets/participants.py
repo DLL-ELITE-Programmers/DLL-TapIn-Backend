@@ -75,9 +75,11 @@ class ParticipantViewset(BaseAuthModelViewset):
 
         try:
             if query.get("event"):
+                print(query.get("event"))
                 event_id = query.get("event")
                 participant = Participant.objects.filter(event=event_id)
-                if not participant:
+                
+                if not participant.exists():
                     raise Exception("Invalid event")
 
                 data = self.serializer_class(participant.all(), many=True).data
