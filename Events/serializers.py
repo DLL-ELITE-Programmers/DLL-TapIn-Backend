@@ -60,3 +60,36 @@ class ParticipantSerializer(serializers.ModelSerializer):
             "department_name": dept.get("department_name"),
             "year_level": year_level
         }
+
+class ExportParticipantSerializer(serializers.ModelSerializer):
+    participant = serializers.SerializerMethodField()
+    
+    class Meta:
+        model = Participant
+        fields = [
+            "participant"
+        ]
+    
+    def get_participant(self, obj):
+        sex = ["Female", "Male", "Others"]
+        participant_ = User.objects.get(username=obj.participant)
+        
+        dept = {
+            "department_id": "unknown",
+            "department_name": "Sana ako na lang"
+        }
+        if participant_.department:
+            dept = DepartmentSerializer(participant_.department).data
+        
+        year_level = (datetime.now().year - int(participant_.username[:3]) - 2000) + 1
+
+        return {
+            "student_id": participant_.username,
+            "first_name": participant_.first_name,
+            "middle_name": participant_.middle_name,
+            "last_name": participant_.last_name,
+            "sex": sex[participant_.sex],
+            "department_id": dept.get("department_id"),
+            "department_name": dept.get("department_name"),
+            "year_level": year_level
+        }

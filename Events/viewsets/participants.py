@@ -1,4 +1,4 @@
-import pandas as pd
+import pandas as pd, numpy as np
 from django.http import HttpResponse
 from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny
@@ -8,7 +8,7 @@ from Accounts.models import User
 from BaseAuth.paginator import TenRowPaginator
 from BaseAuth.views import BaseAuthModelViewset
 from Events.models import Event, Participant
-from Events.serializers import ParticipantSerializer
+from Events.serializers import ParticipantSerializer, ExportParticipantSerializer
 
 
 class ParticipantViewset(BaseAuthModelViewset):
@@ -76,30 +76,33 @@ class ParticipantViewset(BaseAuthModelViewset):
         try:
             if query.get("event"):
                 event_id = query.get("event")
-                participant = Participant.objects.filter(event__exact=event_id)
+                participant = Participant.objects.filter(event=event_id)
 
                 if not participant:
                     raise Exception("Invalid event")
                 
                 print("Exits")
 
-                data = self.serializer_class(participant.all(), many=True).data
-                print(data)
+                exported_data = ExportParticipantSerializer(participant.all(), many=True).data
+                # return Response(exported_data)
+
                 info = [
-                    item["participant_info"]
-                    for item in data
-                    if "participant_info" in item
+                    item["participant"]
+                    for item in exported_data
+                    if "participant" in item
                 ]
 
-                dataframe = pd.DataFrame(info)
-                response = HttpResponse(
+                df = pd.DataFrame(info)
+
+                exported_data = HttpResponse(
                     content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
                 )
-                response["Content-Disposition"] = (
+                exported_data["Content-Disposition"] = (
                     f'attachment; filename="participants-{event_id}.xlsx"'
                 )
-                dataframe.to_excel(response, index=False)
-                return response
+                df.to_excel(exported_data, index=False)
+                return exported_data
+            
         except Exception as e:
             return Response({"error": str(e)})
         
