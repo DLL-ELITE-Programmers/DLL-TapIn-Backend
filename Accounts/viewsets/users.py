@@ -1,4 +1,5 @@
 import re
+
 from django.contrib.auth import authenticate
 from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny, IsAuthenticated
@@ -9,6 +10,7 @@ from Accounts.models import User
 from Accounts.serializers import UserSerializer
 from BaseAuth.views import BaseAuthModelViewset
 from Departments.models import Department
+from Departments.serializers import DepartmentSerializer
 from QR_TapIn.email import sendEmail
 
 
@@ -99,6 +101,7 @@ class UserViewset(BaseAuthModelViewset):
         if not user_data:
             return Response({"error": "Invalid credentials"})
         refresh = RefreshToken.for_user(user_data)
+
         return Response(
             {
                 "message": "User logged in",
@@ -110,6 +113,8 @@ class UserViewset(BaseAuthModelViewset):
                     "middle_name": user_data.middle_name,
                     "last_name": user_data.last_name,
                     "email": user_data.email,
+                    "sex": user_data.sex,
+                    "department": user_data.department.department_id,
                     "superuser": user_data.is_superuser,
                 },
             }

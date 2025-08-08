@@ -1,5 +1,5 @@
 <h3 align="center">QR TapIn</h3>
-<h4 align="center">DLL BSIT Department x IT Paradigm</h4>
+<h4 align="center">DLL BSIT Department x IT Paradigm x DLL E.L.I.T.E</h4>
 
 ---
 
