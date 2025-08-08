@@ -17,6 +17,7 @@ class UpdatesAPI(APIView):
                         "Added signup information verification",
                         "Added Student ID verification",
                         "Added some buttons [for test]",
+                        "Student ID Auto format [to prevent student id unformat]",
                     ]
                 },
                 "link": "https://expo.dev/artifacts/eas/8oazocEofsg4jBBnkzfSuB.apk",
@@ -24,7 +25,7 @@ class UpdatesAPI(APIView):
                 # TODO: Just add one if the update is required to the specific version
                 # given to the application. This is to make the least version of require
                 # version, meaning, not the actual version but only the required version
-                "require": 0,
+                "require": -1,
             }
         )
 
