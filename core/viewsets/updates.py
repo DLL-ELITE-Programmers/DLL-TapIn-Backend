@@ -20,7 +20,7 @@ class UpdatesAPI(APIView):
                         "Student ID Auto format [to prevent student id unformat]",
                     ]
                 },
-                "link": "https://expo.dev/artifacts/eas/8oazocEofsg4jBBnkzfSuB.apk",
+                "link": "https://expo.dev/artifacts/eas/bYYoqU3oWKwFKR3pwnhaJp.apk",
                 # NOTE: This key is very important for future updates
                 # TODO: Just add one if the update is required to the specific version
                 # given to the application. This is to make the least version of require
