@@ -8,7 +8,7 @@ from rest_framework.status import HTTP_404_NOT_FOUND
 
 
 def main(request):
-    return HttpResponse("<h1>Miss mo na? Kaso miss ka ba?</h1>")
+    return render(request, "index.html")
 
 
 def _404(request):
@@ -34,8 +34,4 @@ def _404(request):
         "Di ba sabi mo, di mo ko iiwan. Di pababayaang ako'y mag-isa. Di ba sabi mo sabay tayong tatanda, bakit bigla ka na lang nanjaan, sa kabilang bahay.",
     ]
     response = responses[random.randint(0, len(responses) - 1)]
-    return render(request, "index.html", {"response": response})
-    return HttpResponse(
-        f"<h1>{response}</h1>",
-        # status=HTTP_404_NOT_FOUND,
-    )
+    return render(request, "404.html", {"response": response})

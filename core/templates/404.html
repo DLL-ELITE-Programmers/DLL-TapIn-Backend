@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+  <head>
+    <title>I miss you</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        user-select: none;
+        box-sizing: border-box;
+        border: none;
+        outline: none;
+      }
+      .main {
+        display: flex;
+        flex-direction: column;
+        height: 100dvh;
+        width: 100dvw;
+        overflow: hidden;
+        justify-content: center;
+        align-items: center;
+
+        .card {
+          display: flex;
+          flex-direction: column;
+          box-shadow: 3px 3px 5px #aaaaaa;
+          padding: 0.5rem;
+          border-radius: 0.25rem;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          gap: 1rem;
+
+          .title {
+            color: #ff5050;
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div style="width: 50%; height: 25%" class="card">
+        <h1 class="title">Page under maintenance</h1>
+        <!-- <h3>Please wait for our updates</h3> -->
+        <h3>{{ response }}</h3>
+      </div>
+    </div>
+  </body>
+</html>

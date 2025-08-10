@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>I miss you</title>
+    <title>Welcome</title>
     <style>
       * {
         margin: 0;
@@ -13,26 +13,50 @@
       }
       .main {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
         height: 100dvh;
         width: 100dvw;
         overflow: hidden;
         justify-content: center;
         align-items: center;
+        gap: 1.5rem;
 
-        .card {
+        > div {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          align-items: start;
+          justify-content: center;
+          gap: 1.5rem;
+          width: 100%;
+        }
+      }
+      .card {
+        display: flex;
+        flex-direction: column;
+        box-shadow: 3px 3px 5px #aaaaaa;
+        padding: 0.5rem;
+        border-radius: 0.25rem;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 1rem;
+        min-width: 45%;
+        max-height: 45%;
+        overflow: auto;
+
+        .title {
+          color: #6060ff;
+        }
+
+        ol {
           display: flex;
           flex-direction: column;
-          box-shadow: 3px 3px 5px #aaaaaa;
-          padding: 0.5rem;
-          border-radius: 0.25rem;
-          align-items: center;
-          justify-content: center;
-          text-align: center;
-          gap: 1rem;
+          flex-wrap: wrap;
 
-          .title {
-            color: #ff5050;
+          li {
+            text-align: left;
           }
         }
       }
@@ -40,10 +64,25 @@
   </head>
   <body>
     <div class="main">
-      <div style="width: 50%; min-height: 25%" class="card">
-        <h1 class="title">Page under maintenance</h1>
-        <!-- <h3>Please wait for our updates</h3> -->
-        <h3>{{ response }}</h3>
+      <div>
+        <div class="card">
+          <h3 class="title">DLL Tap-In Developers</h3>
+          <ol>
+            <li>Barry Adam Adam</li>
+            <li>Kurt Cyrus Atoat</li>
+            <li>Peter Paul Eclavea</li>
+            <li>Bernard Gabito</li>
+            <li>Rogemson Molina</li>
+            <li>Ryann Kim Sesgundo</li>
+          </ol>
+        </div>
+        <div class="card">
+          <h3 class="title">Ethical and Security Team</h3>
+          <ol>
+            <li>Carlos Ragudo</li>
+            <li>Terrence Martin Terrega</li>
+          </ol>
+        </div>
       </div>
     </div>
   </body>
