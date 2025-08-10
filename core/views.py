@@ -1,6 +1,7 @@
 import random
 
 from django.http import HttpResponse
+from django.shortcuts import render
 from rest_framework.status import HTTP_404_NOT_FOUND
 
 # Create your views here.
@@ -16,7 +17,7 @@ def _404(request):
         "Sanaol hinahanap, ikaw kaya hahanapin din?",
         "Yung tipong akala mo may pag-asa pa, pero it's a prank.",
         "Kung ang isang bansa ay may watawat, bakit mo pa hinahanap?",
-        "flag{sorry hindi ito ang flag}",
+        "One day you will notice, you're not the same as younger version of you.",
         "Yung akala mo nakita mo na, pero nagising kang bigla.",
         "Swerte kunyare, pero malas talaga.",
         "May pang gala ka nga, wala ka namang kasama, sana ako na lang.",
@@ -33,6 +34,7 @@ def _404(request):
         "Di ba sabi mo, di mo ko iiwan. Di pababayaang ako'y mag-isa. Di ba sabi mo sabay tayong tatanda, bakit bigla ka na lang nanjaan, sa kabilang bahay.",
     ]
     response = responses[random.randint(0, len(responses) - 1)]
+    return render(request, "index.html", {"response": response})
     return HttpResponse(
         f"<h1>{response}</h1>",
         # status=HTTP_404_NOT_FOUND,
