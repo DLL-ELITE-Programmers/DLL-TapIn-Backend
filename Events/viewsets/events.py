@@ -51,6 +51,9 @@ class EventViewset(BaseAuthModelViewset):
                         "event_information": serialize.data,
                     }
                 )
+            return Response({
+                "error": self.extract_error_handler(serialize.errors)
+            })
 
         except Exception as e:
             return Response({"error": self.extract_error_handler(e)})
