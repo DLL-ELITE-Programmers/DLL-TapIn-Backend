@@ -7,7 +7,6 @@ from Organizations.models import Organization
 
 # Create your models here.
 
-
 class Event(models.Model):
     event_id = models.CharField(
         max_length=10,
