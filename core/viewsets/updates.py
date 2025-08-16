@@ -6,11 +6,14 @@ class UpdatesAPI(APIView):
     def get(self, req):
         return Response(
             {
-                "message": "Thie update was created for test",
+                "message": "The application was now on its urge.",
                 "version": "0.1.1",
                 # NOTE: This key gives the user to know what are the changes from different versions
                 "new": {
+                    # INFO: Please make the logs as this format, to prevent the misinformation
+                    # Just add another version name below for additional changes.
                     "0.1.1": [
+                        "Fixed Terms and Condition",
                         "Walang bago, ikaw pa rin",
                         "Added Auto update",
                         "Fixed typo [department -> sex]",
@@ -18,7 +21,9 @@ class UpdatesAPI(APIView):
                         "Added Student ID verification",
                         "Added some buttons [for test]",
                         "Student ID Auto format [to prevent student id unformat]",
-                    ]
+                    ],
+                    "0.1.0": ["Initial Release", "Pilot"],
+                    "0.0.1": ["Di ko alam kung gusto pa nya ako"],
                 },
                 "link": "https://expo.dev/artifacts/",
                 # NOTE: This key is very important for future updates
