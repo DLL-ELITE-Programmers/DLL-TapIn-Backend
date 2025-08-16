@@ -127,6 +127,8 @@ ALLOWED_HOSTS = ["*"]
 # CORS_ALLOWED_ORIGINS = [PRIMARY_HOST]
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
+CSRF_TRUSTED_ORIGINS = ["https://goshawk-stunning-basically.ngrok-free.app"]
+
 CORS_ALLOW_METHODS = ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
 
 # Database
