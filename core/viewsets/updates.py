@@ -23,7 +23,7 @@ class UpdatesAPI(APIView):
                         "Student ID Auto format [to prevent student id unformat]",
                     ],
                     "0.1.0": ["Initial Release", "Pilot"],
-                    "0.0.1": ["Di ko alam kung gusto pa nya ako"],
+                    "0.0.1": ["flag{Di_ko_alam_kung_gusto_pa_nya_ako}"],
                 },
                 "link": "https://expo.dev/artifacts/eas/xbijN7x5XrET1dFXB9MD2z.apk",
                 # NOTE: This key is very important for future updates
