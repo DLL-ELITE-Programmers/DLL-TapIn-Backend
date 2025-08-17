@@ -25,7 +25,7 @@ class UpdatesAPI(APIView):
                     "0.1.0": ["Initial Release", "Pilot"],
                     "0.0.1": ["flag{Di_ko_alam_kung_gusto_pa_nya_ako}"],
                 },
-                "link": "https://expo.dev/artifacts/eas/xbijN7x5XrET1dFXB9MD2z.apk",
+                "link": "https://expo.dev/artifacts/eas/a1pCM5uQPNExs8VBW74pc9.apk",
                 # NOTE: This key is very important for future updates
                 # TODO: Just add one if the update is required to the specific version
                 # given to the application. This is to make the least version of require
