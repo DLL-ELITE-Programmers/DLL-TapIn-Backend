@@ -13,18 +13,17 @@ class UpdatesAPI(APIView):
                     # INFO: Please make the logs as this format, to prevent the misinformation
                     # Just add another version name below for additional changes.
                     "0.1.1": [
+                        "Fixed Changelogs Issue",
                         "Fixed Remember Me Issue",
                         "Added Offline mode",
                         "Fixed Terms and Condition",
-                        "Walang bago, ikaw pa rin",
                         "Added Auto update",
                         "Fixed typo [department -> sex]",
                         "Added signup information verification",
                         "Added Student ID verification",
-                        "Added some buttons [for test]",
                         "Student ID Auto format [to prevent student id unformat]",
                     ],
-                    "0.1.0": ["Initial Release", "Pilot"],
+                    "0.1.0": ["Initial Release", "Pilot Test to BSIT Dept"],
                     "0.0.1": ["flag{Di_ko_alam_kung_gusto_pa_nya_ako}"],
                 },
                 "link": "https://expo.dev/artifacts/eas/a1pCM5uQPNExs8VBW74pc9.apk",
