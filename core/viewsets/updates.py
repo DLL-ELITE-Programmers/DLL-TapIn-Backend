@@ -13,6 +13,8 @@ class UpdatesAPI(APIView):
                     # INFO: Please make the logs as this format, to prevent the misinformation
                     # Just add another version name below for additional changes.
                     "0.1.1": [
+                        "Fixed Remember Me Issue",
+                        "Added Offline mode",
                         "Fixed Terms and Condition",
                         "Walang bago, ikaw pa rin",
                         "Added Auto update",
