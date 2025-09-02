@@ -25,7 +25,7 @@ class CustomUserConfig(UserAdmin):
                     "verified",
                 )
             },
-        )
+        ),
         # (
         #     "Permissions",
         #     {
