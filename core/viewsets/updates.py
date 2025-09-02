@@ -7,12 +7,12 @@ class UpdatesAPI(APIView):
         return Response(
             {
                 "message": "The application was now on its urge.",
-                "version": "0.1.1",
+                "version": "0.1.0",
                 # NOTE: This key gives the user to know what are the changes from different versions
                 "new": {
                     # INFO: Please make the logs as this format, to prevent the misinformation
                     # Just add another version name below for additional changes.
-                    "0.1.1": [
+                    "0.1.0": [
                         "Fixed Changelogs Issue",
                         "Fixed Remember Me Issue",
                         "Added Offline mode",
@@ -23,8 +23,7 @@ class UpdatesAPI(APIView):
                         "Added Student ID verification",
                         "Student ID Auto format [to prevent student id unformat]",
                     ],
-                    "0.1.0": ["Initial Release", "Pilot Test to BSIT Dept"],
-                    "0.0.1": ["flag{Di_ko_alam_kung_gusto_pa_nya_ako}"],
+                    "0.0.1": ["Initial Release", "Pilot Test to BSIT Dept"],
                 },
                 "link": "https://expo.dev/artifacts/eas/a1pCM5uQPNExs8VBW74pc9.apk",
                 # NOTE: This key is very important for future updates
