@@ -25,19 +25,19 @@ class CustomUserConfig(UserAdmin):
                     "verified",
                 )
             },
-        ),
-        (
-            "Permissions",
-            {
-                "fields": (
-                    "is_active",
-                    "is_staff",
-                    "is_superuser",
-                    "groups",
-                    # "user_permissions",
-                )
-            },
-        ),
+        )
+        # (
+        #     "Permissions",
+        #     {
+        #         "fields": (
+        #             "is_active",
+        #             "is_staff",
+        #             "is_superuser",
+        #             "groups",
+        #             # "user_permissions",
+        #         )
+        #     },
+        # ),
     )
 
     list_display = (
