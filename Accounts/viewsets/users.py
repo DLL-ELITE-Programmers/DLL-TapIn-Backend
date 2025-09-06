@@ -15,7 +15,7 @@ from QR_TapIn.email import sendEmail
 
 
 class UserViewset(BaseAuthModelViewset):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
     queryset = User.objects.filter()
     serializer_class = UserSerializer
 
@@ -136,7 +136,8 @@ class UserViewset(BaseAuthModelViewset):
             )
             if not user_id_pattern:
                 return Response({"error": "Invalid Student ID"})
-            data["username"] = data.get("student_id").upper()
+            if data.get("student_id"):
+                data["username"] = data.get("student_id").upper()
             dept = Department.objects.get(
                 department_id__iexact=data.get("department_id")
             )

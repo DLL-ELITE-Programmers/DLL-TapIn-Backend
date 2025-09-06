@@ -20,13 +20,7 @@ class ParticipantSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Participant
-        fields = [
-            "event",
-            "event_info",
-            "participant_info",
-            "time_in",
-            "time_out"
-        ]
+        fields = "__all__"
 
     def get_event_info(self, obj):
         event_ = Event.objects.get(event_id=obj.event)

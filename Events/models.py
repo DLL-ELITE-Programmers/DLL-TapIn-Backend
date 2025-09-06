@@ -31,7 +31,7 @@ class Event(models.Model):
 class Participant(CoreModelDescending):
     order = "time_in"
 
-    event = models.ForeignKey(Event, on_delete=models.CASCADE)
-    participant = models.ForeignKey(User, on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, null=True)
+    participant = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     time_in = models.DateTimeField(auto_now_add=True)
     time_out = models.DateTimeField(auto_now=True)
