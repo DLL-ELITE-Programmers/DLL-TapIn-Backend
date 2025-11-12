@@ -22,7 +22,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-+mr5i&7kz*vr@+nt2a7@w2e6s9fb45h9&*q@@fz774&hl&3-+b"
+# SECRET_KEY = "django-insecure-+mr5i&7kz*vr@+nt2a7@w2e6s9fb45h9&*q@@fz774&hl&3-+b"
+SECRET_KEY = "django-insecure-6z9=%(i80n_hn_1e&_d5d0(3$a2(gu_051$@(k*cf3*i4nmr(f"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -99,7 +100,7 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=3),
 }
 
-ROOT_URLCONF = "QR_TapIn.urls"
+ROOT_URLCONF = "DLL_TapIn.urls"
 
 TEMPLATES = [
     {
@@ -116,7 +117,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "QR_TapIn.wsgi.application"
+WSGI_APPLICATION = "DLL_TapIn.wsgi.application"
 
 
 EMAIL_ACCOUNTS = [{"email": "dll_tapin@myyahoo.com", "password": "RyannKim327"}]
