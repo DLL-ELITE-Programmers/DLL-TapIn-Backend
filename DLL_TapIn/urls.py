@@ -36,7 +36,7 @@ dattebayo = __dattebayo_multiverse__[
 api = "seems-so-bad/"
 
 urlpatterns = [
-    path(f"{base64.b64decode(dattebayo).decode('utf-8')}/", admin.site.urls),
+    # path(f"{base64.b64decode(dattebayo).decode('utf-8')}/", admin.site.urls),
     path("miss-ko-na-sya/", admin.site.urls),
     path(api, include("Accounts.urls")),
     path(api, include("Departments.urls")),
