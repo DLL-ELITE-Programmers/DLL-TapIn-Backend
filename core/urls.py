@@ -3,7 +3,7 @@ from rest_framework.routers import SimpleRouter
 
 from core.views import _404, main
 from core.viewsets.updates import TermsAndCondition, UpdatesAPI
-from QR_TapIn.urls import api
+from DLL_TapIn.urls import api
 
 urlpatterns = [
     path("", main),
