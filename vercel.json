@@ -1,7 +1,7 @@
 {
   "builds": [
     {
-      "src": "QR_TapIn/wsgi.py",
+      "src": "DLL_TapIn/wsgi.py",
       "use": "@vercel/python",
       "config": {
         "maxLambdaSize": "15mb",
@@ -12,7 +12,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "QR_TapIn/wsgi.py"
+      "dest": "DLL_TapIn/wsgi.py"
     }
   ]
 }

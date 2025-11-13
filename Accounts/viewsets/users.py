@@ -1,6 +1,7 @@
 import re
 
 from django.contrib.auth import authenticate
+from DLL_TapIn.email import sendEmail
 from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
@@ -11,7 +12,6 @@ from Accounts.serializers import UserSerializer
 from BaseAuth.views import BaseAuthModelViewset
 from Departments.models import Department
 from Departments.serializers import DepartmentSerializer
-from QR_TapIn.email import sendEmail
 
 
 class UserViewset(BaseAuthModelViewset):
