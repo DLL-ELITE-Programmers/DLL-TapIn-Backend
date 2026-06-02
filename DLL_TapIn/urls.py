@@ -15,33 +15,26 @@ Including another URLconf
   2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-import base64
-import random
+import os
 
 from django.contrib import admin
 from django.urls import include, path
+from dotenv import load_dotenv
 
-__dattebayo_multiverse__ = [
-    "X19kYXR0ZWJheW9fXw==",
-    "X19kYXR0ZWJheW8=",
-    "RGF0dGVCYXlv",
-    "X2RhdHRlYmF5b18=",
-    "ZGF0ZWtheW8=",
-]
+load_dotenv()
 
-dattebayo = __dattebayo_multiverse__[
-    random.randint(0, len(__dattebayo_multiverse__) - 1)
-]
+api = os.getenv("API", "api1")
+admin_ = os.getenv("ADMIN", "admin1")
 
-api = "seems-so-bad/"
+print(api)
+print(admin_)
 
 urlpatterns = [
-    path(f"{base64.b64decode(dattebayo).decode('utf-8')}/", admin.site.urls),
-    path("miss-ko-na-sya/", admin.site.urls),
-    path(api, include("Accounts.urls")),
-    path(api, include("Departments.urls")),
-    path(api, include("Events.urls")),
-    # path(api, include("Feedbacks.urls")),
-    path(api, include("Organizations.urls")),
+    path(f"{admin_}/", admin.site.urls),
+    path(f"{api}/", include("Accounts.urls")),
+    path(f"{api}/", include("Departments.urls")),
+    path(f"{api}/", include("Events.urls")),
+    # path(f"{api}/", include("Feedbacks.urls")),
+    path(f"{api}/", include("Organizations.urls")),
     path("", include("core.urls")),
 ]
