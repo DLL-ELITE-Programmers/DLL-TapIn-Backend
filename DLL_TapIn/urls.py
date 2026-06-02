@@ -26,15 +26,18 @@ load_dotenv()
 api = os.getenv("API", "api1")
 admin_ = os.getenv("ADMIN", "admin1")
 
-print(api)
-print(admin_)
+if not api.endswith("/"):
+    api += "/"
+
+if not admin_.endswith("/"):
+    admin_ += "/"
 
 urlpatterns = [
-    path(f"{admin_}/", admin.site.urls),
-    path(f"{api}/", include("Accounts.urls")),
-    path(f"{api}/", include("Departments.urls")),
-    path(f"{api}/", include("Events.urls")),
+    path(f"{admin_}", admin.site.urls),
+    path(f"{api}", include("Accounts.urls")),
+    path(f"{api}", include("Departments.urls")),
+    path(f"{api}", include("Events.urls")),
     # path(f"{api}/", include("Feedbacks.urls")),
-    path(f"{api}/", include("Organizations.urls")),
+    path(f"{api}", include("Organizations.urls")),
     path("", include("core.urls")),
 ]
