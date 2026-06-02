@@ -1,89 +1,309 @@
 <!doctype html>
-<html>
-  <head>
-    <title>Welcome</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        user-select: none;
-        box-sizing: border-box;
-        border: none;
-        outline: none;
-      }
-      .main {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        height: 100dvh;
-        width: 100dvw;
-        overflow: hidden;
-        justify-content: center;
-        align-items: center;
-        gap: 1.5rem;
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DLL Tap-In Team</title>
 
-        > div {
-          display: flex;
-          flex-direction: row;
-          flex-wrap: wrap;
-          align-items: start;
-          justify-content: center;
-          gap: 1.5rem;
-          width: 100%;
-        }
-      }
-      .card {
-        display: flex;
-        flex-direction: column;
-        box-shadow: 3px 3px 5px #aaaaaa;
-        padding: 0.5rem;
-        border-radius: 0.25rem;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        gap: 1rem;
-        min-width: 45%;
-        max-height: 45%;
-        overflow: auto;
+<style>
+:root{
+    --primary: #4f46e5;
+    --secondary: #6366f1;
+    --accent: #8b5cf6;
+    --card-bg: rgba(255,255,255,0.12);
+    --border: rgba(255,255,255,0.2);
+}
 
-        .title {
-          color: #6060ff;
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        ol {
-          display: flex;
-          flex-direction: column;
-          flex-wrap: wrap;
+body{
+    min-height:100vh;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary),
+        var(--accent)
+    );
+    color:white;
+    padding:2rem;
+}
 
-          li {
-            text-align: left;
-          }
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="main">
-      <div>
-        <div class="card">
-          <h3 class="title">DLL Tap-In Developers</h3>
-          <ol>
-            <li>Barry Adam Adam</li>
-            <li>Kurt Cyrus Atoat</li>
-            <li>Peter Paul Eclavea</li>
-            <li>Bernard Gabito</li>
-            <li>Rogemson Molina</li>
-            <li>Ryann Kim Sesgundo</li>
-          </ol>
-        </div>
-        <div class="card">
-          <h3 class="title">Ethical and Security Team</h3>
-          <ol>
-            <li>Carlos Ragudo</li>
-            <li>Terrence Martin Terrega</li>
-          </ol>
-        </div>
-      </div>
+.main{
+    max-width:1200px;
+    margin:auto;
+}
+
+.header{
+    text-align:center;
+    margin-bottom:3rem;
+}
+
+.header h1{
+    font-size:3rem;
+    margin-bottom:.5rem;
+}
+
+.header p{
+    font-size:1.1rem;
+    opacity:.9;
+}
+
+.team-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap:1.5rem;
+}
+
+.card{
+    background:var(--card-bg);
+    backdrop-filter:blur(15px);
+    -webkit-backdrop-filter:blur(15px);
+
+    border:1px solid var(--border);
+    border-radius:20px;
+
+    padding:1.5rem;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.15);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    box-shadow:
+        0 20px 40px rgba(0,0,0,0.25);
+}
+
+.title{
+    text-align:center;
+    margin-bottom:1.25rem;
+    font-size:1.25rem;
+    font-weight:700;
+}
+
+ol{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:.75rem;
+}
+
+li{
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:12px;
+    padding:.9rem;
+    line-height:1.5;
+}
+
+.role{
+    display:block;
+    font-weight:700;
+    margin-bottom:.25rem;
+}
+
+.footer{
+    margin-top:3rem;
+    text-align:center;
+    opacity:.85;
+    font-size:.95rem;
+}
+
+@media (max-width: 768px){
+    .header h1{
+        font-size:2.2rem;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="main">
+
+    <div class="header">
+        <h1>DLL Tap-In Team</h1>
+        <p>Development • Design • Quality Assurance • Distribution</p>
     </div>
-  </body>
+
+    <div class="team-grid">
+
+        <!-- Leadership -->
+        <div class="card">
+            <h3 class="title">📌 Project Leadership</h3>
+
+            <ol>
+                <li>
+                    <span class="role">Head Developer</span>
+                    Ryann Kim Sesgundo
+                </li>
+
+                <li>
+                    <span class="role">Project Initiator</span>
+                    Kurt Cyrus Atoat
+                </li>
+            </ol>
+        </div>
+
+        <!-- Design -->
+        <div class="card">
+            <h3 class="title">🎨 Design Team</h3>
+
+            <ol>
+                <li>
+                    <span class="role">Lead UX/UI Designer</span>
+                    Kurt Cyrus Atoat
+                </li>
+
+                <li>
+                    <span class="role">UX/UI Designer</span>
+                    Rogemson Molina
+                </li>
+            </ol>
+        </div>
+
+        <!-- Development -->
+        <div class="card">
+            <h3 class="title">💻 Development Team</h3>
+
+            <ol>
+                <li>
+                    <span class="role">Head Developer</span>
+                    Ryann Kim Sesgundo
+                </li>
+
+                 <li>
+                    <span class="role">External Collaborator</span>
+                    Rogemson Molina
+                </li>
+            </ol>
+        </div>
+
+        <!-- QA -->
+        <div class="card">
+            <h3 class="title">🧪 Quality Assurance & Testing</h3>
+
+            <ol>
+                <li>
+                    <span class="role">Software Tester</span>
+                    Peter Paul Eclavea
+                </li>
+
+                <li>
+                    <span class="role">Software Tester</span>
+                    Carlos Ragudo
+                </li>
+
+                <li>
+                    <span class="role">Software Tester</span>
+                    Terrence Martin Terrega
+                </li>
+
+                <li>
+                    <span class="role">UX/UI Tester</span>
+                    Bernard Gabito
+                </li>
+
+                <li>
+                    <span class="role">UX/UI Tester</span>
+                    Barry Adam Adam
+                </li>
+
+            </ol>
+        </div>
+
+        <!-- Distribution -->
+        <div class="card">
+            <h3 class="title">📦 Distribution Team</h3>
+
+            <ol>
+                <li>
+                    <span class="role">Distribution Coordinator</span>
+                    Bernard Gabito
+                </li>
+
+                <li>
+                    <span class="role">Distribution Coordinator</span>
+                    Barry Adam Adam
+                </li>
+            </ol>
+        </div>
+
+        <!-- AI Agents & Development Tools -->
+        <div class="card">
+          <h3 class="title">🤖 AI Agents & Development Tools</h3>
+
+          <ol>
+            <li>
+              <span class="role">Google Gemini</span>
+                Documentation Assistance
+            </li>
+
+            <li>
+              <span class="role">ChatGPT</span>
+                Design Ideas & Development Support
+            </li>
+
+            <li>
+              <span class="role">Figma</span>
+                Wireframing & Interactive Prototyping
+            </li>
+
+            <li>
+              <span class="role">Neovim (AstroNvim)</span>
+                Primary Integrated Development Environment
+            </li>
+          </ol>
+        </div>
+
+        <!-- Frameworks & Technologies -->
+        <div class="card">
+          <h3 class="title">⚙️ Frameworks & Technologies</h3>
+
+          <ol>
+            <li>
+              <span class="role">Django REST Framework</span>
+                Backend API Development
+            </li>
+
+            <li>
+              <span class="role">React.js</span>
+                Frontend User Interface
+            </li>
+
+            <li>
+              <span class="role">React Icons</span>
+                Icon Library
+            </li>
+
+            <li>
+              <span class="role">Tailwind CSS</span>
+                Styling Framework
+            </li>
+
+            <li>
+              <span class="role">HTML5 QRCode</span>
+                QR Code Scanning Integration
+            </li>
+            </ol>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        IT Department x IT Paradigm x DLL ELITE © 2026
+    </div>
+
+</div>
+
+</body>
 </html>
