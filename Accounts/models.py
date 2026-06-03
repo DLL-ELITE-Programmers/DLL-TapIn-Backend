@@ -24,6 +24,12 @@ class User(AbstractUser):
         null=True,
         blank=True,
     )
+    year = models.IntegerField(default=1)
+    section = models.CharField(max_length=1, default="A")
+    officer = models.ForeignKey(
+        Department, null=True, blank=True, on_delete=models.SET_NULL
+    )
+
     verified = models.BooleanField(default=False)
 
     def __str__(self):
