@@ -1,5 +1,9 @@
-# QR TapIn
-#### DLL BSIT Department x IT Paradigm x DLL E.L.I.T.E
+<div align="center">
+    <img src="logo-128.png" width=200 />
+    <h1>DLL VeriScan</h1>
+    <p>Formerly DLL TapIn</p>
+    <h4>DLL BSIT Department x IT Paradigm x DLL ELITE</h4>
+</div>
 
 ---
 
