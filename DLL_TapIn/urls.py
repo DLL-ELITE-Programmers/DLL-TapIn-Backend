@@ -23,8 +23,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-api = os.getenv("API", "api1")
-admin_ = os.getenv("ADMIN", "admin1")
+api = os.getenv("API", "")
+admin_ = os.getenv("ADMIN", "")
 
 if not api.endswith("/"):
     api += "/"
