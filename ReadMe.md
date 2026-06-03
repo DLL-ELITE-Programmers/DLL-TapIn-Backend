@@ -42,6 +42,100 @@
 
 ---
 
+### System Overview
+
+#### Database Schema
+The following diagram illustrates the relationships between core entities in the system:
+
+```mermaid
+erDiagram
+    USER }o--|| DEPARTMENT : "belongs to"
+    USER ||--o{ PARTICIPANT : "participates in"
+    USER ||--o{ FEEDBACK : "gives"
+    DEPARTMENT }o--o{ ORGANIZATION : "associated with"
+    ORGANIZATION }o--o{ EVENT : "hosts"
+    EVENT ||--o{ PARTICIPANT : "has"
+    EVENT ||--o{ FEEDBACK : "receives"
+
+    USER {
+        uuid id PK
+        string username
+        string first_name
+        string last_name
+        string middle_name
+        int sex
+        boolean verified
+    }
+
+    DEPARTMENT {
+        int id PK
+        string department_id
+        string department_name
+    }
+
+    ORGANIZATION {
+        int id PK
+        string organization_id
+        string organization_name
+    }
+
+    EVENT {
+        string event_id PK
+        string event_name
+        string event_description
+        string event_venue
+    }
+
+    PARTICIPANT {
+        int id PK
+        datetime time_in
+        datetime time_out
+    }
+
+    FEEDBACK {
+        int id PK
+        string title
+        string message
+        datetime time_added
+    }
+```
+
+#### Process Flow
+The typical interaction flow for event attendance and management:
+
+```mermaid
+sequenceDiagram
+    participant U as User (Student)
+    participant S as System (Backend)
+    participant O as Officer/Admin
+    participant DB as Database
+
+    O->>S: Create Event
+    S->>DB: Save Event Info
+    DB-->>S: Event Created
+    S-->>O: Return event_id (QR Code generation)
+
+    U->>S: Tap-In (Submit Event ID & Username)
+    S->>DB: Validate User & Event
+    DB-->>S: Validated
+    S->>DB: Create Participant Record (Time-in)
+    DB-->>S: Saved
+    S-->>U: Participation Confirmed
+
+    U->>S: Submit Event Feedback
+    S->>DB: Save Feedback
+    DB-->>S: Saved
+    S-->>U: Feedback Received
+
+    O->>S: Request Participant Report (Export)
+    S->>DB: Query Participants for Event
+    DB-->>S: Participant Data
+    S->>S: Process Data (Pandas)
+    S-->>O: Download Excel Report (.xlsx)
+```
+
+---
+
 ### Installation
 
 <h3><font color="red">Please note that you need first to activate your <code>Virtual Environment</code> before you install these dependencies. You may install it using <code>pip install virtualenv</code> and activate it using <code>python -m venv venv</code>.</font></h3>
