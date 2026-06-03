@@ -120,7 +120,7 @@ TEMPLATES = [
 WSGI_APPLICATION = "DLL_TapIn.wsgi.application"
 
 
-EMAIL_ACCOUNTS = [{"email": "dll_tapin@myyahoo.com", "password": "RyannKim327"}]
+EMAIL_ACCOUNTS = [{"email": "dll_tapin@myyahoo.com", "password": ""}]
 
 PRIMARY_HOST = "*"
 
@@ -139,10 +139,10 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "defaultdb",
-        "HOST": "pg-dlltapin-qrtapin.d.aivencloud.com",
-        "USER": "avnadmin",
-        "PASSWORD": "AVNS_yOZfsG3PrJNMaBJqoJz",
-        "PORT": "24040",
+        "HOST": os.getenv("DB_HOST", ""),
+        "USER": os.getenv("DB_USER", ""),
+        "PASSWORD": os.getenv("DB_PASSWORD", ""),
+        "PORT": os.getenv("DB_PORT", ""),
         "OPTIONS": {
             "sslmode": "verify-full",
             "sslrootcert": os.path.join(BASE_DIR, "certs", "aiven-ca.crt"),
